@@ -1,0 +1,42 @@
+{
+  "name": "qape",
+  "version": "1.0.0",
+  "private": true,
+  "description": "qape",
+  "author": "Aaron Wong",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@mdx-js/react": "^2.1.5",
+    "babel-plugin-styled-components": "^2.0.7",
+    "gatsby": "^4.24.4",
+    "gatsby-plugin-google-analytics": "^4.24.0",
+    "gatsby-plugin-image": "^2.24.0",
+    "gatsby-plugin-manifest": "^4.24.0",
+    "gatsby-plugin-mdx": "^4.3.0",
+    "gatsby-plugin-sharp": "^4.24.0",
+    "gatsby-plugin-styled-components": "^5.24.0",
+    "gatsby-source-filesystem": "^4.24.0",
+    "gatsby-transformer-sharp": "^4.24.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "styled-components": "^5.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.45",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "gh-pages": "^4.0.0",
+    "typescript": "^4.8.3"
+  }
+}
