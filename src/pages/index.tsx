@@ -1,3 +1,5 @@
+import '../styles/global.css';
+
 import * as React from 'react';
 
 import type { HeadFC } from 'gatsby';
@@ -140,7 +142,7 @@ const links = [
 const IndexPage = () => {
   return (
     <main style={pageStyles}>
-      <h1 style={headingStyles}>
+      <h1 className="text-3xl font-bold underline">
         Congratulations try it again
         <br />
         <span style={headingAccentStyles}>
@@ -193,4 +195,4 @@ const IndexPage = () => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC = () => <title>Qape developers</title>;
