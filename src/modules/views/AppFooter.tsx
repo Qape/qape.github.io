@@ -1,5 +1,5 @@
 import { Container, Grid, Link, SvgIcon, Typography } from '@mui/material';
-import { siGatsby, siGithub } from 'simple-icons/icons';
+import { siGatsby, siGithub, siMui } from 'simple-icons/icons';
 
 import React from 'react';
 
@@ -22,7 +22,7 @@ export default function AppFooter() {
         </Grid>
       </Grid>
       <Grid container justifyContent="flex-end" xs={2}>
-        <Grid item xs={6}>
+        <Grid item xs={8}>
           <Typography
             variant="caption"
             sx={{ display: 'block' }}
@@ -42,12 +42,23 @@ export default function AppFooter() {
             </SvgIcon>
           </Link>
           <Link
-            href="https://creativecommons.org/licenses/by/3.0/"
-            title="Creative Commons BY 3.0"
+            href="https://mui.com/"
+            title="MUI: The React component library you always wanted"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{ marginRight: 1 }}
+          >
+            <SvgIcon htmlColor="#007FFF">
+              <path d={siMui.path} />
+            </SvgIcon>
+          </Link>
+          <Link
+            href="https://github.com/"
+            title="Github"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SvgIcon>
+            <SvgIcon htmlColor="#181717">
               <path d={siGithub.path} />
             </SvgIcon>
           </Link>
