@@ -3,7 +3,7 @@ import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
 import Logo from '../../images/logo.png';
 import React from 'react';
 
-const pages = []; //['Om oss', 'Teamet', 'Kontakt'];
+const pages: Array<string> = []; //['Om oss', 'Teamet', 'Kontakt'];
 
 export default function AppAppBar() {
   return (
@@ -16,7 +16,7 @@ export default function AppAppBar() {
           src={Logo}
         />
         <Box sx={{ display: { md: 'flex' } }}>
-          {pages.map((page) => (
+          {pages?.map((page) => (
             <Button
               key={page}
               sx={{
