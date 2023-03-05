@@ -1,7 +1,6 @@
 import { Container, Grid, Link, SvgIcon, Typography } from '@mui/material';
-import { siGatsby, siGithub, siMui } from 'simple-icons/icons';
-
 import React from 'react';
+import { siGatsby, siGithub, siMui } from 'simple-icons/icons';
 
 function Copyright() {
   return (

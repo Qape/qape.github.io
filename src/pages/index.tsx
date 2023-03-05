@@ -1,11 +1,10 @@
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import type { HeadFC } from 'gatsby';
 import * as React from 'react';
 
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-
-import AppAppBar from '../modules/views/AppAppBar';
-import AppFooter from '../modules/views/AppFooter';
-import type { HeadFC } from 'gatsby';
-import Hero from '../modules/views/Hero';
+import AppAppBar from '../components/AppAppBar';
+import AppFooter from '../components/AppFooter';
+import Hero from '../components/Hero';
 
 const darkTheme = createTheme({
   palette: {

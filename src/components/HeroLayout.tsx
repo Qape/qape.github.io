@@ -1,10 +1,8 @@
-import * as React from 'react';
-
-import { Theme, styled } from '@mui/material/styles';
-
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
+import { styled, Theme } from '@mui/material/styles';
 import { SxProps } from '@mui/system';
+import * as React from 'react';
 
 const HeroLayoutRoot = styled('section')(({ theme }) => ({
   color: theme.palette.common.white,

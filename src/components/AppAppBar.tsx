@@ -1,7 +1,7 @@
-import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Button, Toolbar } from '@mui/material';
+import React from 'react';
 
 import Logo from '../images/logo.png';
-import React from 'react';
 
 const pages: Array<string> = []; //['Om oss', 'Teamet', 'Kontakt'];
 
