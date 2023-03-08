@@ -19,12 +19,6 @@ import styled from 'styled-components';
 import { device } from '../pages/index';
 import { isEmail, isMobilePhoneNumber } from './utils/Regex.util';
 
-const ContactUsWrapper = styled.div`
-  @media ${device.laptop} {
-    padding: 4em;
-  }
-`;
-
 const BoxWrapper = styled(Box)`
   display: flex;
   flex-direction: column;
@@ -42,6 +36,7 @@ const BoxWrapper = styled(Box)`
 
   @media ${device.laptop} {
     margin-top: 0;
+    padding: 4em;
     flex-direction: column;
   }
 
@@ -133,199 +128,200 @@ const ContactUs = () => {
   };
 
   return (
-    <ContactUsWrapper>
-      <BoxWrapper id="box-wrapper">
-        <InformationSection id="information-section">
-          <Typography
-            variant="h4"
-            align="center"
-            component="h4"
-            sx={{
-              marginBottom: '1em',
-              fontWeight: 700,
+    <BoxWrapper id="box-wrapper">
+      <InformationSection id="information-section">
+        <Typography
+          variant="h4"
+          align="center"
+          component="h4"
+          sx={{
+            marginBottom: '1em',
+            fontWeight: 700,
+          }}
+        >
+          Är du intresserad av att veta mer om oss eller om IT branchens bästa
+          modell?
+        </Typography>
+        <Typography
+          variant="body1"
+          align="center"
+          sx={{ marginBottom: '2em', margin: '0 1em' }}
+        >
+          Vi har alla färdigheter du behöver för att skräddarsy dina behov och
+          göra framtiden till en lovande sådan. Fyll i dina uppgifter så
+          återkommer vi till dig inom kort för att se hur vi kan hjälpa dig på
+          bästa sätt.
+        </Typography>
+      </InformationSection>
+
+      <Grid container direction="column">
+        <Grid item>
+          <FormWrapper
+            id="contact-form"
+            className=""
+            onSubmit={(e) => {
+              handleSubmit(e);
             }}
           >
-            Är du intresserad av att veta mer om oss eller om IT branchens bästa
-            modell?
-          </Typography>
-          <Typography
-            variant="body1"
-            align="center"
-            sx={{ marginBottom: '2em', margin: '0 1em' }}
-          >
-            Vi har alla färdigheter du behöver för att skräddarsy dina behov och
-            göra framtiden till en lovande sådan. Fyll i dina uppgifter så
-            återkommer vi till dig inom kort för att se hur vi kan hjälpa dig på
-            bästa sätt.
-          </Typography>
-        </InformationSection>
-
-        <Grid container direction="column">
-          <Grid item>
-            <FormWrapper
-              id="contact-form"
-              className=""
-              onSubmit={(e) => {
-                handleSubmit(e);
-              }}
+            <ContactFieldWrapper>
+              <TextField
+                id="name"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <PersonIcon />
+                    </InputAdornment>
+                  ),
+                }}
+                required
+                label="Namn"
+                error={name?.value === ''}
+                helperText={name?.value === '' ? 'Fyll i namn' : ''}
+                name="userName"
+                inputProps={{ maxLength: 30 }}
+                onChange={(e) => {
+                  setName({ value: e.target.value, valid: true });
+                }}
+                variant="standard"
+                margin="normal"
+                fullWidth
+              />
+              <TextField
+                id="phonenumber"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <PhoneIphoneIcon />
+                    </InputAdornment>
+                  ),
+                }}
+                required
+                label="Telefon"
+                error={
+                  phone?.value === '' ||
+                  (phone?.valid !== undefined && phone?.valid === false)
+                }
+                helperText={
+                  phone?.value === ''
+                    ? 'Fyll i telefonnummer'
+                    : phone?.valid !== undefined && phone?.valid === false
+                    ? 'Ogiltigt telefonnummer, vänligen kontrollera formatet på telefonnumret'
+                    : ''
+                }
+                name="phone"
+                inputProps={{ maxLength: 12 }}
+                onChange={(e) => {
+                  setPhone({ value: e.target.value });
+                }}
+                onBlur={handlePhoneNumberBlur}
+                variant="standard"
+                margin="normal"
+                fullWidth
+              />
+              <TextField
+                id="email"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <AlternateEmailIcon />
+                    </InputAdornment>
+                  ),
+                }}
+                required
+                variant="standard"
+                label="E-post"
+                name="email"
+                error={
+                  email?.value === '' ||
+                  (email?.valid !== undefined && email?.valid === false)
+                }
+                helperText={
+                  email?.value === ''
+                    ? 'Fyll i mejladress'
+                    : email?.valid !== undefined && email?.valid === false
+                    ? 'Ogiltig mejladress använd formatet din@epostadress.se'
+                    : ''
+                }
+                onChange={handleEmailChange}
+                onBlur={handleEmailBlur}
+                margin="normal"
+                fullWidth
+              />
+            </ContactFieldWrapper>
+            <Grid item>
+              <TextField
+                id="message"
+                label="Meddelande"
+                name="message"
+                variant="standard"
+                onChange={(e) => {
+                  setMessage({
+                    value: e.target.value,
+                    valid: true,
+                  });
+                }}
+                error={message?.value === ''}
+                helperText={message?.value === '' ? 'Fyll i meddelande' : ''}
+                margin="normal"
+                multiline
+                fullWidth
+                rows={4}
+              />
+            </Grid>
+            <Grid
+              container
+              direction="row"
+              spacing={2}
+              style={{ marginTop: 20, flexDirection: 'column' }}
             >
-              <ContactFieldWrapper>
-                <TextField
-                  id="name"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <PersonIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                  required
-                  label="Namn"
-                  error={name?.value === ''}
-                  helperText={name?.value === '' ? 'Fyll i namn' : ''}
-                  name="userName"
-                  inputProps={{ maxLength: 30 }}
-                  onChange={(e) => {
-                    setName({ value: e.target.value, valid: true });
-                  }}
-                  variant="standard"
-                  margin="normal"
-                  fullWidth
-                />
-                <TextField
-                  id="phonenumber"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <PhoneIphoneIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                  required
-                  label="Telefon"
-                  error={
-                    phone?.value === '' ||
-                    (phone?.valid !== undefined && phone?.valid === false)
+              <FormGroup sx={{ paddingLeft: '16px', marginBottom: '16px' }}>
+                <Typography variant="body1" sx={{ marginBottom: '32px' }}>
+                  Markera rutan nedan för att ge ditt medgivande till att vi
+                  lagrar och behandlar dina personuppgifter enligt GDPR, EU:s
+                  nya dataskyddsförordning. Läs mer om hur vi på Qape använder
+                  dina <a href="">personuppgifter</a>
+                </Typography>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      required
+                      sx={{
+                        justifyContent: 'flex-start',
+                      }}
+                      inputProps={{ 'aria-label': 'controlled' }}
+                      checked={gdprChecked}
+                      onChange={(e) => setGdprChecked(e?.target.checked)}
+                    />
                   }
-                  helperText={
-                    phone?.value === ''
-                      ? 'Fyll i telefonnummer'
-                      : phone?.valid !== undefined && phone?.valid === false
-                      ? 'Ogiltigt telefonnummer, vänligen kontrollera formatet på telefonnumret'
-                      : ''
-                  }
-                  name="phone"
-                  inputProps={{ maxLength: 12 }}
-                  onChange={(e) => {
-                    setPhone({ value: e.target.value });
-                  }}
-                  onBlur={handlePhoneNumberBlur}
-                  variant="standard"
-                  margin="normal"
-                  fullWidth
+                  label="Jag godkänner att mina uppgifter sparas"
                 />
-                <TextField
-                  id="email"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <AlternateEmailIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                  required
-                  variant="standard"
-                  label="E-post"
-                  name="email"
-                  error={
-                    email?.value === '' ||
-                    (email?.valid !== undefined && email?.valid === false)
-                  }
-                  helperText={
-                    email?.value === ''
-                      ? 'Fyll i mejladress'
-                      : email?.valid !== undefined && email?.valid === false
-                      ? 'Ogiltig mejladress använd formatet din@epostadress.se'
-                      : ''
-                  }
-                  onChange={handleEmailChange}
-                  onBlur={handleEmailBlur}
-                  margin="normal"
-                  fullWidth
-                />
-              </ContactFieldWrapper>
-              <Grid item>
-                <TextField
-                  required
-                  id="message"
-                  label="Meddelande"
-                  name="message"
-                  variant="standard"
-                  onChange={(e) => {
-                    setMessage({
-                      value: e.target.value,
-                      valid: true,
-                    });
-                  }}
-                  error={message?.value === ''}
-                  helperText={message?.value === '' ? 'Fyll i meddelande' : ''}
-                  margin="normal"
-                  multiline
-                  fullWidth
-                  rows={4}
-                />
-              </Grid>
-              <Grid
-                container
-                direction="row"
-                spacing={2}
-                style={{ marginTop: 20, flexDirection: 'column' }}
-              >
-                <FormGroup sx={{ paddingLeft: '16px', marginBottom: '16px' }}>
-                  <Typography variant="body1" sx={{ marginBottom: '32px' }}>
-                    Markera rutan nedan för att ge ditt medgivande till att vi
-                    lagrar och behandlar dina personuppgifter enligt GDPR, EU:s
-                    nya dataskyddsförordning. Läs mer om hur vi på Qape använder
-                    dina <a href="">personuppgifter</a>
-                  </Typography>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        required
-                        sx={{
-                          justifyContent: 'flex-start',
-                        }}
-                        inputProps={{ 'aria-label': 'controlled' }}
-                        checked={gdprChecked}
-                        onChange={(e) => setGdprChecked(e?.target.checked)}
-                      />
-                    }
-                    label="Jag godkänner att mina uppgifter sparas"
-                  />
-                </FormGroup>
-                {process.env.REACT_APP_SITE_KEY && (
+              </FormGroup>
+              {process.env.REACT_APP_SITE_KEY &&
+                name?.valid &&
+                phone?.valid &&
+                email?.valid &&
+                gdprChecked && (
                   <ReCAPTCHA
                     style={{ marginLeft: '16px' }}
                     sitekey={process.env.REACT_APP_SITE_KEY}
                     onChange={handleCaptchaOnChange}
                   />
                 )}
-                <Grid item>
-                  <Button
-                    type="submit"
-                    color="primary"
-                    variant="contained"
-                    disabled={!captchVerified || !gdprChecked}
-                  >
-                    Skicka
-                  </Button>
-                </Grid>
+              <Grid item>
+                <Button
+                  type="submit"
+                  color="primary"
+                  variant="contained"
+                  disabled={!captchVerified || !gdprChecked}
+                >
+                  Skicka
+                </Button>
               </Grid>
-            </FormWrapper>
-          </Grid>
+            </Grid>
+          </FormWrapper>
         </Grid>
-      </BoxWrapper>
-    </ContactUsWrapper>
+      </Grid>
+    </BoxWrapper>
   );
 };
 
