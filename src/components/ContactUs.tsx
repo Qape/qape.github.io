@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import * as React from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import styled from 'styled-components';
 
 import { device } from '../pages/index';
@@ -78,6 +79,7 @@ const ContactUs = () => {
     undefined
   );
   const [gdprChecked, setGdprChecked] = React.useState(false);
+  const [captchVerified, setCaptchaVerified] = React.useState(false);
 
   type TextField = {
     value: string;
@@ -114,6 +116,22 @@ const ContactUs = () => {
     }
   };
 
+  const handleCaptchaOnChange = (token: string | null) => {
+    setCaptchaVerified(Boolean(token));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setCaptchaVerified(false);
+    setGdprChecked(false);
+    setName(undefined);
+    setPhone(undefined);
+    setEmail(undefined);
+    setMessage(undefined);
+
+    // CALL ENDPOINT FOR SENDING EMAIL
+  };
+
   return (
     <ContactUsWrapper>
       <BoxWrapper id="box-wrapper">
@@ -148,7 +166,7 @@ const ContactUs = () => {
               id="contact-form"
               className=""
               onSubmit={(e) => {
-                e.preventDefault();
+                handleSubmit(e);
               }}
             >
               <ContactFieldWrapper>
@@ -285,8 +303,20 @@ const ContactUs = () => {
                     label="Jag godkänner att mina uppgifter sparas"
                   />
                 </FormGroup>
+                {process.env.REACT_APP_SITE_KEY && (
+                  <ReCAPTCHA
+                    style={{ marginLeft: '16px' }}
+                    sitekey={process.env.REACT_APP_SITE_KEY}
+                    onChange={handleCaptchaOnChange}
+                  />
+                )}
                 <Grid item>
-                  <Button type="submit" color="primary" variant="contained">
+                  <Button
+                    type="submit"
+                    color="primary"
+                    variant="contained"
+                    disabled={!captchVerified || !gdprChecked}
+                  >
                     Skicka
                   </Button>
                 </Grid>
