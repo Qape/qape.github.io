@@ -16,13 +16,13 @@ import * as React from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import styled from 'styled-components';
 
-import { device } from '../pages/index';
+import { device } from '../components/utils/CustomBreakpoints';
 import { isEmail, isMobilePhoneNumber } from './utils/Regex.util';
 
 const BoxWrapper = styled(Box)`
   display: flex;
   flex-direction: column;
-  margin-top: 2em;
+  margin: 2em 0;
 
   @media ${device.mobileL} {
     margin-top: 2em;

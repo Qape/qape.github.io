@@ -1,4 +1,4 @@
-import { formatPhoneNumber } from '../utils/phoneNumberFormatter';
+import { formatPhoneNumber } from '../utils/PhoneNumberFormatter';
 
 describe('phoneNumberFormatter', () => {
   it('returns undefined when passing undefined as argument', () => {
