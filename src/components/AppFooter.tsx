@@ -4,7 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Logo from '../images/logo.png';
-// import { device } from './utils/CustomBreakpoints';
+import { device } from './utils/CustomBreakpoints';
 
 const FooterContainer = styled.div`
   background: #122838;
@@ -12,7 +12,7 @@ const FooterContainer = styled.div`
   padding: 2rem 1rem;
 `;
 
-/* const FooterGrid = styled(Grid)`
+const FooterGrid = styled(Grid)`
   display: flex;
 
   @media ${device.mobileS} {
@@ -31,12 +31,12 @@ const FooterContainer = styled.div`
   @media ${device.laptopL} {
     flex-direction: row !important;
   }
-`; */
+`;
 
 export default function AppFooter() {
   return (
     <FooterContainer>
-      <Grid
+      <FooterGrid
         container
         alignItems="flex-start"
         justifyContent="center"
@@ -121,7 +121,7 @@ export default function AppFooter() {
             {'© '} {new Date().getFullYear()} | QAPE AB | 556925-0631
           </Typography>
         </Grid>
-      </Grid>
+      </FooterGrid>
     </FooterContainer>
   );
 }
