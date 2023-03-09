@@ -16,7 +16,7 @@ const FooterGrid = styled(Grid)`
   display: flex;
 
   @media ${device.mobileS} {
-    margin: 0em 1rem;
+    margin: 0 1rem;
     flex-direction: column !important;
   }
 
