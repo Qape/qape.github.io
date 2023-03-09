@@ -66,6 +66,11 @@ const ContactFieldWrapper = styled.div`
   }
 `;
 
+const ConsentGrid = styled(Grid)`
+  margin-top: 2em;
+  flex-direction: column;
+`;
+
 const ContactUs = () => {
   const [name, setName] = React.useState<TextField | undefined>(undefined);
   const [phone, setPhone] = React.useState<TextField | undefined>(undefined);
@@ -268,14 +273,9 @@ const ContactUs = () => {
                 rows={4}
               />
             </Grid>
-            <Grid
-              container
-              direction="row"
-              spacing={2}
-              style={{ marginTop: 20, flexDirection: 'column' }}
-            >
-              <FormGroup sx={{ paddingLeft: '16px', marginBottom: '16px' }}>
-                <Typography variant="body1" sx={{ marginBottom: '32px' }}>
+            <ConsentGrid>
+              <FormGroup sx={{ marginBottom: '2em' }}>
+                <Typography variant="body1" sx={{ marginBottom: '2em' }}>
                   Markera rutan nedan för att ge ditt medgivande till att vi
                   lagrar och behandlar dina personuppgifter enligt GDPR, EU:s
                   nya dataskyddsförordning. Läs mer om hur vi på Qape använder
@@ -296,28 +296,22 @@ const ContactUs = () => {
                   label="Jag godkänner att mina uppgifter sparas"
                 />
               </FormGroup>
-              {process.env.REACT_APP_SITE_KEY &&
-                name?.valid &&
-                phone?.valid &&
-                email?.valid &&
-                gdprChecked && (
-                  <ReCAPTCHA
-                    style={{ marginLeft: '16px' }}
-                    sitekey={process.env.REACT_APP_SITE_KEY}
-                    onChange={handleCaptchaOnChange}
-                  />
-                )}
-              <Grid item>
-                <Button
-                  type="submit"
-                  color="primary"
-                  variant="contained"
-                  disabled={!captchVerified || !gdprChecked}
-                >
-                  Skicka
-                </Button>
-              </Grid>
-            </Grid>
+              {process.env.REACT_APP_SITE_KEY && (
+                <ReCAPTCHA
+                  sitekey={process.env.REACT_APP_SITE_KEY}
+                  onChange={handleCaptchaOnChange}
+                />
+              )}
+              <Button
+                sx={{ marginTop: '2em' }}
+                type="submit"
+                color="primary"
+                variant="contained"
+                disabled={!captchVerified || !gdprChecked}
+              >
+                Skicka
+              </Button>
+            </ConsentGrid>
           </FormWrapper>
         </Grid>
       </Grid>
