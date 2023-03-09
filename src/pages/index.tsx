@@ -4,17 +4,25 @@ import * as React from 'react';
 
 import AppAppBar from '../components/AppAppBar';
 import AppFooter from '../components/AppFooter';
+import ContactUs from '../components/ContactUs';
 import Hero from '../components/Hero';
 
 const darkTheme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: 'light',
   },
   components: {
     MuiAppBar: {
       styleOverrides: {
         colorPrimary: {
           backgroundColor: '#122838',
+        },
+      },
+    },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          marginLeft: 0,
         },
       },
     },
@@ -26,6 +34,7 @@ const IndexPage = () => {
     <ThemeProvider theme={darkTheme}>
       <AppAppBar />
       <Hero />
+      <ContactUs />
       <AppFooter />
     </ThemeProvider>
   );

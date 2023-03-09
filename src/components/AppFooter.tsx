@@ -20,7 +20,7 @@ export default function AppFooter() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid container justifyContent="flex-end" xs={2}>
+      <Grid container justifyContent="flex-end" item xs={2}>
         <Grid item xs={8}>
           <Typography
             variant="caption"
