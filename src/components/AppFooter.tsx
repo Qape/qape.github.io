@@ -66,7 +66,7 @@ export default function AppFooter() {
           <Typography variant="body2" display={'flex'} flexDirection="column">
             <Link
               href="https://www.gatsbyjs.com/"
-              title="Gatsby"
+              title="Om oss"
               target="_blank"
               rel="noopener noreferrer"
               sx={{ marginRight: 1 }}
@@ -75,7 +75,7 @@ export default function AppFooter() {
             </Link>
             <Link
               href="https://www.gatsbyjs.com/"
-              title="Gatsby"
+              title="Kontakta oss"
               target="_blank"
               rel="noopener noreferrer"
               sx={{ marginRight: 1 }}
@@ -84,7 +84,7 @@ export default function AppFooter() {
             </Link>
             <Link
               href="https://www.gatsbyjs.com/"
-              title="Gatsby"
+              title="Jobba hos oss"
               target="_blank"
               rel="noopener noreferrer"
               sx={{ marginRight: 1 }}
@@ -93,7 +93,7 @@ export default function AppFooter() {
             </Link>
             <Link
               href="https://www.gatsbyjs.com/"
-              title="Gatsby"
+              title="Policy"
               target="_blank"
               rel="noopener noreferrer"
               sx={{ marginRight: 1 }}
@@ -107,8 +107,8 @@ export default function AppFooter() {
             Följ oss
           </Typography>
           <Link
-            href="https://www.linkedin.com/company/qape-dev-ab/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_companies%3BMHefpAqCQ9OTde33ZlAqaQ%3D%3D"
-            title="Qape dev"
+            href="https://www.linkedin.com/company/qape-dev/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_companies%3BAYXETcFFTaKJPNH4ZndVAw%3D%3D"
+            title="Qape-LinkedIn"
             target="_blank"
             rel="noopener noreferrer"
             sx={{ marginRight: 1 }}
