@@ -7,6 +7,7 @@ import Logo from '../images/logo.png';
 import { device } from './utils/CustomBreakpoints';
 
 const FooterContainer = styled.div`
+  display: flex;
   background: #122838;
   color: white;
   padding: 2rem 1rem;
