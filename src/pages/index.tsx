@@ -2,14 +2,44 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import type { HeadFC } from 'gatsby';
 import * as React from 'react';
 
-import AppAppBar from '../components/AppAppBar';
+// import AppAppBar from '../components/AppAppBar';
 import AppFooter from '../components/AppFooter';
 import ContactUs from '../components/ContactUs';
 import Hero from '../components/Hero';
+import NavigationBar from '../components/NavigationBar';
+
+declare module '@mui/material/styles' {
+  interface BreakpointOverrides {
+    xs: false; // removes the `xs` breakpoint
+    sm: true;
+    md: false;
+    lg: false;
+    xl: false;
+    mobile: true; // adds the `mobile` breakpoint
+    mobileM: true;
+    mobileL: true;
+    tablet: true;
+    laptop: true;
+    laptopL: true;
+    desktop: true;
+  }
+}
 
 const darkTheme = createTheme({
   palette: {
     mode: 'light',
+  },
+  breakpoints: {
+    values: {
+      mobile: 0,
+      mobileM: 375,
+      mobileL: 425,
+      sm: 600,
+      tablet: 768,
+      laptop: 1024,
+      laptopL: 1440,
+      desktop: 2560,
+    },
   },
   components: {
     MuiAppBar: {
@@ -30,16 +60,18 @@ const darkTheme = createTheme({
 });
 
 const IndexPage = () => {
+  const footerRef = React.useRef<null | HTMLDivElement>(null);
+
   return (
     <ThemeProvider theme={darkTheme}>
-      <AppAppBar />
+      <NavigationBar footerRef={footerRef} />
       <Hero />
       <ContactUs />
-      <AppFooter />
+      <AppFooter footerRef={footerRef} />
     </ThemeProvider>
   );
 };
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>QAPE developers</title>;
+export const Head: HeadFC = () => <title>Qape</title>;

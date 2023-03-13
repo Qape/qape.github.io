@@ -9,7 +9,7 @@ const HeroLayoutRoot = styled('section')(({ theme }) => ({
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
-  [theme.breakpoints.up('sm')]: {
+  [theme.breakpoints.up('tablet')]: {
     height: '80vh',
     minHeight: 500,
     maxHeight: 1300,

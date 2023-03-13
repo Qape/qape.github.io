@@ -1,48 +1,34 @@
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Box, Grid, Link, Typography } from '@mui/material';
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 
 import Logo from '../images/logo.png';
-import { device } from './utils/CustomBreakpoints';
 
-const FooterContainer = styled.div`
+const FooterContainer = styled(Box)`
   display: flex;
   background: #122838;
   color: white;
   padding: 2rem 1rem;
 `;
 
-const FooterGrid = styled(Grid)`
-  display: flex;
+type AppFooterProps = {
+  footerRef: React.MutableRefObject<HTMLDivElement | null>;
+};
 
-  @media ${device.mobileS} {
-    margin: 0 1rem;
-    flex-direction: column !important;
-  }
-
-  @media ${device.tablet} {
-    flex-direction: row !important;
-  }
-
-  @media ${device.laptop} {
-    flex-direction: row !important;
-  }
-
-  @media ${device.laptopL} {
-    flex-direction: row !important;
-  }
-`;
-
-export default function AppFooter() {
+export default function AppFooter({ footerRef }: AppFooterProps) {
   return (
-    <FooterContainer>
-      <FooterGrid
+    <FooterContainer ref={footerRef} id="footer-container">
+      <Grid
         container
         alignItems="flex-start"
         justifyContent="center"
         columnGap={10}
         rowGap={5}
+        sx={{
+          display: 'flex',
+          flexDirection: { mobile: 'column', sm: 'row' },
+        }}
       >
         <Grid item>
           <Box
@@ -52,7 +38,7 @@ export default function AppFooter() {
             src={Logo}
           />
         </Grid>
-        <Grid item xs={2} style={{ maxWidth: '14em' }}>
+        <Grid item mobile={2} style={{ maxWidth: '14em' }}>
           <Typography variant="subtitle1" component="h5" gutterBottom>
             Vi älskar TECH
           </Typography>
@@ -122,7 +108,7 @@ export default function AppFooter() {
             {'© '} {new Date().getFullYear()} | QAPE AB | 556925-0631
           </Typography>
         </Grid>
-      </FooterGrid>
+      </Grid>
     </FooterContainer>
   );
 }
