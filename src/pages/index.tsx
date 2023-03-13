@@ -2,7 +2,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import type { HeadFC } from 'gatsby';
 import * as React from 'react';
 
-// import AppAppBar from '../components/AppAppBar';
 import AppFooter from '../components/AppFooter';
 import ContactUs from '../components/ContactUs';
 import Hero from '../components/Hero';
@@ -57,16 +56,20 @@ const darkTheme = createTheme({
       },
     },
   },
+  typography: {
+    fontFamily: 'Poppins',
+  },
 });
 
 const IndexPage = () => {
   const footerRef = React.useRef<null | HTMLDivElement>(null);
+  const contactUsRef = React.useRef<null | HTMLDivElement>(null);
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <NavigationBar footerRef={footerRef} />
+      <NavigationBar contactUsRef={contactUsRef} footerRef={footerRef} />
       <Hero />
-      <ContactUs />
+      <ContactUs contactUsRef={contactUsRef} />
       <AppFooter footerRef={footerRef} />
     </ThemeProvider>
   );
@@ -74,4 +77,16 @@ const IndexPage = () => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Qape</title>;
+export const Head: HeadFC = () => {
+  return (
+    <>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet"
+      ></link>
+      <title>Qape</title>;
+    </>
+  );
+};

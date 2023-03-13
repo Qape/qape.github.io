@@ -18,28 +18,46 @@ import * as React from 'react';
 import Logo from '../images/logo.png';
 
 const drawerWidth = 240;
-const navItems = ['Hem', 'Om oss', 'Kontakta oss'];
+const navItems = ['Hem', 'Om oss', 'Jobba hos oss', 'Kontakta oss'];
 
 type NavigationBarProps = {
+  contactUsRef: React.MutableRefObject<HTMLDivElement | null>;
   footerRef: React.MutableRefObject<HTMLDivElement | null>;
 };
 
-export default function NavigationBar({ footerRef }: NavigationBarProps) {
+export default function NavigationBar({
+  contactUsRef,
+  footerRef,
+}: NavigationBarProps) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [selectedNavItem, setSelectedNavItem] = React.useState('');
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
-  const scrollToItem = () => {
+  React.useEffect(() => {
     console.log('footer ref', footerRef.current);
-    footerRef?.current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'end',
-      inline: 'nearest',
-    });
-    console.log(document.getElementById('footer-container'));
-  };
+
+    if (selectedNavItem === 'Om oss') {
+      footerRef?.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      });
+    }
+
+    if (selectedNavItem === 'Kontakta oss') {
+      console.log(contactUsRef?.current);
+      contactUsRef?.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end',
+        inline: 'nearest',
+      });
+    }
+
+    setSelectedNavItem('');
+  }, [selectedNavItem]);
 
   const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -60,11 +78,12 @@ export default function NavigationBar({ footerRef }: NavigationBarProps) {
       <Divider />
       <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
         <List>
-          {navItems.map((item) => (
+          {navItems.map((item, index) => (
             <ListItem key={item} disablePadding>
               <ListItemButton
+                onClick={() => setSelectedNavItem(item)}
+                id={`menu-item-button-${index}`}
                 sx={{ textAlign: 'center' }}
-                onClick={() => scrollToItem()}
               >
                 <ListItemText primary={item} />
               </ListItemButton>

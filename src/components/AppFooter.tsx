@@ -24,7 +24,7 @@ export default function AppFooter({ footerRef }: AppFooterProps) {
         alignItems="flex-start"
         justifyContent="center"
         columnGap={10}
-        rowGap={5}
+        rowGap={2}
         sx={{
           display: 'flex',
           flexDirection: { mobile: 'column', sm: 'row' },

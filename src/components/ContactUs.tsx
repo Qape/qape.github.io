@@ -32,7 +32,11 @@ const ConsentGrid = styled(Grid)`
   flex-direction: column;
 `;
 
-const ContactUs = () => {
+type ContactUsProps = {
+  contactUsRef: React.MutableRefObject<HTMLDivElement | null>;
+};
+
+const ContactUs = ({ contactUsRef }: ContactUsProps) => {
   const [name, setName] = React.useState<TextField | undefined>(undefined);
   const [phone, setPhone] = React.useState<TextField | undefined>(undefined);
   const [email, setEmail] = React.useState<TextField | undefined>(undefined);
@@ -91,6 +95,7 @@ const ContactUs = () => {
 
   return (
     <Box
+      ref={contactUsRef}
       id="box-wrapper"
       sx={{
         padding: { mobile: '2em 0', sm: '4em' },
@@ -108,8 +113,7 @@ const ContactUs = () => {
             fontWeight: 700,
           }}
         >
-          Är du intresserad av att veta mer om oss eller om IT branchens bästa
-          modell?
+          Är du intresserad av att veta mer om oss?
         </Typography>
         <Typography
           variant="body1"
