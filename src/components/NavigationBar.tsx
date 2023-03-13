@@ -37,8 +37,6 @@ export default function NavigationBar({
   };
 
   React.useEffect(() => {
-    console.log('footer ref', footerRef.current);
-
     if (selectedNavItem === 'Om oss') {
       footerRef?.current?.scrollIntoView({
         behavior: 'smooth',
@@ -48,7 +46,6 @@ export default function NavigationBar({
     }
 
     if (selectedNavItem === 'Kontakta oss') {
-      console.log(contactUsRef?.current);
       contactUsRef?.current?.scrollIntoView({
         behavior: 'smooth',
         block: 'end',
