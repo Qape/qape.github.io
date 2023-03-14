@@ -16,40 +16,10 @@ import * as React from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import styled from 'styled-components';
 
-import { device } from '../components/utils/CustomBreakpoints';
 import { isEmail, isMobilePhoneNumber } from './utils/Regex.util';
 
-const BoxWrapper = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  margin: 2em 0;
-
-  @media ${device.mobileL} {
-    margin-top: 2em;
-    flex-direction: column;
-  }
-
-  @media ${device.tablet} {
-    margin-top: 2em;
-    flex-direction: column;
-  }
-
-  @media ${device.laptop} {
-    margin-top: 0;
-    padding: 4em;
-    flex-direction: column;
-  }
-
-  @media ${device.laptopL} {
-    flex-direction: row;
-  }
-`;
-
 const FormWrapper = styled.form`
-  margin: 0 3em;
-  @media ${device.tablet} {
-    margin: 0 6em;
-  }
+  margin: 2em;
 `;
 
 const InformationSection = styled.div`
@@ -57,27 +27,20 @@ const InformationSection = styled.div`
   align-self: center;
 `;
 
-const ContactFieldWrapper = styled.div`
-  display: block;
-  flex-direction: column;
-
-  @media ${device.mobileL} {
-    flex-direction: row;
-  }
-`;
-
 const ConsentGrid = styled(Grid)`
   margin-top: 2em;
   flex-direction: column;
 `;
 
-const ContactUs = () => {
+type ContactUsProps = {
+  contactUsRef: React.MutableRefObject<HTMLDivElement | null>;
+};
+
+const ContactUs = ({ contactUsRef }: ContactUsProps) => {
   const [name, setName] = React.useState<TextField | undefined>(undefined);
   const [phone, setPhone] = React.useState<TextField | undefined>(undefined);
   const [email, setEmail] = React.useState<TextField | undefined>(undefined);
-  const [message, setMessage] = React.useState<TextField | undefined>(
-    undefined
-  );
+
   const [gdprChecked, setGdprChecked] = React.useState(false);
   const [captchVerified, setCaptchaVerified] = React.useState(false);
 
@@ -127,13 +90,19 @@ const ContactUs = () => {
     setName(undefined);
     setPhone(undefined);
     setEmail(undefined);
-    setMessage(undefined);
-
     // CALL ENDPOINT FOR SENDING EMAIL
   };
 
   return (
-    <BoxWrapper id="box-wrapper">
+    <Box
+      ref={contactUsRef}
+      id="box-wrapper"
+      sx={{
+        padding: { mobile: '2em 0', sm: '4em' },
+        display: 'flex',
+        flexDirection: { mobile: 'column', laptop: 'row' },
+      }}
+    >
       <InformationSection id="information-section">
         <Typography
           variant="h4"
@@ -144,8 +113,7 @@ const ContactUs = () => {
             fontWeight: 700,
           }}
         >
-          Är du intresserad av att veta mer om oss eller om IT branchens bästa
-          modell?
+          Är du intresserad av att veta mer om oss?
         </Typography>
         <Typography
           variant="body1"
@@ -168,7 +136,7 @@ const ContactUs = () => {
               handleSubmit(e);
             }}
           >
-            <ContactFieldWrapper>
+            <Box id="contact-field-wrapper">
               <TextField
                 id="name"
                 InputProps={{
@@ -252,35 +220,9 @@ const ContactUs = () => {
                 margin="normal"
                 fullWidth
               />
-            </ContactFieldWrapper>
-            <Grid item>
-              <TextField
-                id="message"
-                label="Meddelande"
-                name="message"
-                variant="standard"
-                onChange={(e) => {
-                  setMessage({
-                    value: e.target.value,
-                    valid: true,
-                  });
-                }}
-                error={message?.value === ''}
-                helperText={message?.value === '' ? 'Fyll i meddelande' : ''}
-                margin="normal"
-                multiline
-                fullWidth
-                rows={4}
-              />
-            </Grid>
+            </Box>
             <ConsentGrid>
               <FormGroup sx={{ marginBottom: '2em' }}>
-                <Typography variant="body1" sx={{ marginBottom: '2em' }}>
-                  Markera rutan nedan för att ge ditt medgivande till att vi
-                  lagrar och behandlar dina personuppgifter enligt GDPR, EU:s
-                  nya dataskyddsförordning. Läs mer om hur vi på Qape använder
-                  dina <a href="">personuppgifter</a>
-                </Typography>
                 <FormControlLabel
                   control={
                     <Checkbox
@@ -293,8 +235,14 @@ const ContactUs = () => {
                       onChange={(e) => setGdprChecked(e?.target.checked)}
                     />
                   }
-                  label="Jag godkänner att mina uppgifter sparas"
+                  label="Jag godkänner att mina personuppgifter lagras"
                 />
+                <i>
+                  <Typography variant="body1" gutterBottom>
+                    Läs mer om hur vi på Qape använder dina{' '}
+                    <a href="">Personuppgifter</a>
+                  </Typography>
+                </i>
               </FormGroup>
               {process.env.REACT_APP_SITE_KEY && (
                 <ReCAPTCHA
@@ -315,7 +263,7 @@ const ContactUs = () => {
           </FormWrapper>
         </Grid>
       </Grid>
-    </BoxWrapper>
+    </Box>
   );
 };
 
