@@ -92,7 +92,9 @@ export default function NavigationBar({
   );
 
   const container =
-    window !== undefined ? () => window.document.body : undefined;
+    typeof window !== 'undefined' && window !== undefined
+      ? () => window.document.body
+      : undefined;
 
   return (
     <Box sx={{ display: 'flex' }}>
