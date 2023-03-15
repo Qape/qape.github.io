@@ -1,3 +1,5 @@
+import '../styles/global.css';
+
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import type { HeadFC } from 'gatsby';
 import * as React from 'react';
@@ -6,6 +8,8 @@ import AppFooter from '../components/AppFooter';
 import ContactUs from '../components/ContactUs';
 import Hero from '../components/Hero';
 import NavigationBar from '../components/NavigationBar';
+import WorkWithUs from '../components/WorkWithUs';
+import OurCustomers from '../components/OurCustomers';
 
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {
@@ -69,6 +73,8 @@ const IndexPage = () => {
     <ThemeProvider theme={darkTheme}>
       <NavigationBar contactUsRef={contactUsRef} footerRef={footerRef} />
       <Hero />
+      <WorkWithUs />
+      <OurCustomers />
       <ContactUs contactUsRef={contactUsRef} />
       <AppFooter footerRef={footerRef} />
     </ThemeProvider>
@@ -80,12 +86,6 @@ export default IndexPage;
 export const Head: HeadFC = () => {
   return (
     <>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
-        rel="stylesheet"
-      ></link>
       <title>Qape</title>;
     </>
   );

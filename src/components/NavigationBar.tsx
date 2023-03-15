@@ -1,5 +1,6 @@
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -18,7 +19,17 @@ import * as React from 'react';
 import Logo from '../images/logo.png';
 
 const drawerWidth = 240;
-const navItems = ['Hem', 'Om oss', 'Jobba hos oss', 'Kontakta oss'];
+const navItemHome = 'HEM';
+const navItemAboutUs = 'OM OSS';
+const navItemWorkWithUs = 'JOBBA PÅ QAPE';
+const navItemContactUs = 'KONTAKTA OSS';
+
+const navItems = [
+  navItemHome,
+  navItemAboutUs,
+  navItemWorkWithUs,
+  navItemContactUs,
+];
 
 type NavigationBarProps = {
   contactUsRef: React.MutableRefObject<HTMLDivElement | null>;
@@ -37,23 +48,23 @@ export default function NavigationBar({
   };
 
   React.useEffect(() => {
-    if (selectedNavItem === 'Om oss') {
+    if (selectedNavItem === navItemAboutUs) {
       footerRef?.current?.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
         inline: 'nearest',
       });
+      setSelectedNavItem('');
     }
 
-    if (selectedNavItem === 'Kontakta oss') {
+    if (selectedNavItem === navItemContactUs) {
       contactUsRef?.current?.scrollIntoView({
         behavior: 'smooth',
         block: 'end',
         inline: 'nearest',
       });
+      setSelectedNavItem('');
     }
-
-    setSelectedNavItem('');
   }, [selectedNavItem]);
 
   const DrawerHeader = styled('div')(({ theme }) => ({
@@ -68,11 +79,18 @@ export default function NavigationBar({
   const drawer = (
     <>
       <DrawerHeader>
-        <IconButton id="close-button" onClick={handleDrawerToggle}>
-          <ChevronRightIcon />
+        <IconButton
+          id="close-button"
+          onClick={handleDrawerToggle}
+          aria-label="stänga meny"
+        >
+          <Typography color="white" variant="body2">
+            STÄNG
+          </Typography>
+          <ChevronRightIcon sx={{ color: 'white' }} />
         </IconButton>
       </DrawerHeader>
-      <Divider />
+      <Divider sx={{ borderColor: 'white' }} />
       <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
         <List>
           {navItems.map((item, index) => (
@@ -82,7 +100,7 @@ export default function NavigationBar({
                 id={`menu-item-button-${index}`}
                 sx={{ textAlign: 'center' }}
               >
-                <ListItemText primary={item} />
+                <ListItemText primary={item.toUpperCase()} />
               </ListItemButton>
             </ListItem>
           ))}
@@ -128,7 +146,16 @@ export default function NavigationBar({
             }}
           >
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
+              <Button
+                key={item}
+                sx={{
+                  color: '#fff',
+                  ':hover': {
+                    bgcolor: '#1c374b',
+                  },
+                }}
+                onClick={() => setSelectedNavItem(item)}
+              >
                 {item}
               </Button>
             ))}
@@ -150,6 +177,9 @@ export default function NavigationBar({
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: drawerWidth,
+              background: '#122838',
+              opacity: '0.98',
+              color: '#fff',
             },
           }}
         >
