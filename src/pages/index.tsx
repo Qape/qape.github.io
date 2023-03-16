@@ -8,8 +8,8 @@ import AppFooter from '../components/AppFooter';
 import ContactUs from '../components/ContactUs';
 import Hero from '../components/Hero';
 import NavigationBar from '../components/NavigationBar';
-import WorkWithUs from '../components/WorkWithUs';
 import OurCustomers from '../components/OurCustomers';
+import WorkWithUs from '../components/WorkWithUs';
 
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {
@@ -28,7 +28,7 @@ declare module '@mui/material/styles' {
   }
 }
 
-const darkTheme = createTheme({
+const theme = createTheme({
   palette: {
     mode: 'light',
   },
@@ -70,7 +70,7 @@ const IndexPage = () => {
   const contactUsRef = React.useRef<null | HTMLDivElement>(null);
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <NavigationBar contactUsRef={contactUsRef} footerRef={footerRef} />
       <Hero />
       <WorkWithUs />

@@ -2,8 +2,8 @@ import { Box, Typography } from '@mui/material';
 import * as React from 'react';
 import styled from 'styled-components';
 
-import IntraServiceLogo from '../images/intraservice.jpeg';
-import NewWaveGroup from '../images/newWavegroup.jpeg';
+import GbgstadLogo from '../images/gbgstad-logo.png';
+import NwgLogo from '../images/nwg-logo.png';
 import TeliaLogo from '../images/telia-logo.png';
 import VGRLogo from '../images/vgr-logo.png';
 import VolvoGroupLogo from '../images/volvogroup-logo.png';
@@ -15,7 +15,6 @@ const InformationSection = styled.div`
 
 const Image = styled.img`
   width: 100%;
-  max-width: 10rem;
   display: block;
   vertical-align: middle;
   filter: grayscale(100%);
@@ -60,60 +59,50 @@ export default function OurCustomers() {
         }}
       >
         <ImageBox>
-          <Image
-            loading="lazy"
-            alt="TELIA COMPANY"
-            data-src={TeliaLogo}
-            src={TeliaLogo}
-          />
+          <Box sx={{ maxWidth: '13rem' }}>
+            <Image
+              loading="lazy"
+              alt="TELIA COMPANY"
+              data-src={TeliaLogo}
+              src={TeliaLogo}
+            />
+          </Box>
         </ImageBox>
         <ImageBox>
-          <Image
-            loading="lazy"
-            alt="VOLVO GROUP"
-            data-src={VolvoGroupLogo}
-            src={VolvoGroupLogo}
-          />
+          <Box sx={{ maxWidth: '16rem' }}>
+            <Image
+              loading="lazy"
+              alt="VOLVO GROUP"
+              data-src={VolvoGroupLogo}
+              src={VolvoGroupLogo}
+            />
+          </Box>
         </ImageBox>
         <ImageBox>
-          <Image
-            loading="lazy"
-            alt="VGR"
-            data-src={VGRLogo}
-            src={VGRLogo}
-            style={{
-              backgroundColor: 'rgb(50, 50, 50)',
-              padding: '1rem',
-              borderRadius: '5px',
-              maxWidth: '11rem',
-            }}
-          />
+          <Box sx={{ maxWidth: '16rem' }}>
+            <Image
+              loading="lazy"
+              alt="Intraservice"
+              data-src={GbgstadLogo}
+              src={GbgstadLogo}
+            />
+          </Box>
         </ImageBox>
         <ImageBox>
-          <Image
-            loading="lazy"
-            alt="New wave group"
-            data-src={NewWaveGroup}
-            src={NewWaveGroup}
-            style={{
-              borderRadius: '5px',
-              maxWidth: '11rem',
-            }}
-          />
+          <Box sx={{ maxWidth: '16rem' }}>
+            <Image loading="lazy" alt="VGR" data-src={VGRLogo} src={VGRLogo} />
+          </Box>
         </ImageBox>
         <ImageBox>
-          <Image
-            loading="lazy"
-            alt="Intraservice"
-            data-src={IntraServiceLogo}
-            src={IntraServiceLogo}
-            style={{
-              borderRadius: '5px',
-              maxWidth: '14rem',
-            }}
-          />
+          <Box sx={{ maxWidth: '16rem' }}>
+            <Image
+              loading="lazy"
+              alt="New wave group"
+              data-src={NwgLogo}
+              src={NwgLogo}
+            />
+          </Box>
         </ImageBox>
-        <ImageBox></ImageBox>
       </Box>
     </Box>
   );
