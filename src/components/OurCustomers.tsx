@@ -2,6 +2,7 @@ import { Box, Typography } from '@mui/material';
 import * as React from 'react';
 import styled from 'styled-components';
 
+import IntraServiceLogo from '../images/intraservice.jpeg';
 import NewWaveGroup from '../images/newWavegroup.jpeg';
 import TeliaLogo from '../images/telia-logo.png';
 import VGRLogo from '../images/vgr-logo.png';
@@ -29,28 +30,6 @@ const ImageBox = styled(Box)`
   align-items: center;
   position: relative;
 `;
-
-/* &:nth-child(n + 4):before {
-    top: -1px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    height: 1px;
-    background-color: #e6e7e8;
-    position: absolute;
-    content: '';
-  }
-
-  &:after {
-    right: -1px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-    height: 66%;
-    background-color: #e6e7e8;
-    position: absolute;
-    content: '';
-  } */
 
 export default function OurCustomers() {
   const servicesTitle = 'Några av våra kunder';
@@ -125,9 +104,13 @@ export default function OurCustomers() {
         <ImageBox>
           <Image
             loading="lazy"
-            alt="Kunder"
-            data-src="https://cinode.com/wp-content/uploads/resized/47/semcon-2_320x320_8f4bbcdb89bb52097ae0d2e8a0f23965.png"
-            src="https://cinode.com/wp-content/uploads/resized/47/semcon-2_320x320_8f4bbcdb89bb52097ae0d2e8a0f23965.png"
+            alt="Intraservice"
+            data-src={IntraServiceLogo}
+            src={IntraServiceLogo}
+            style={{
+              borderRadius: '5px',
+              maxWidth: '14rem',
+            }}
           />
         </ImageBox>
         <ImageBox></ImageBox>
