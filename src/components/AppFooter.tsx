@@ -1,22 +1,24 @@
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Box, Grid, Link, Typography } from '@mui/material';
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import Logo from '../images/logo.png';
+import { DEFAULT_PAGE_COLOR } from '../pages';
 
 const FooterContainer = styled(Box)`
   display: flex;
-  background: #122838;
+  background: ${DEFAULT_PAGE_COLOR};
   color: white;
   padding: 2rem 1rem;
 `;
 
 type AppFooterProps = {
-  footerRef: React.MutableRefObject<HTMLDivElement | null>;
+  footerRef?: React.MutableRefObject<HTMLDivElement | null>;
+  contactUsRef?: React.MutableRefObject<HTMLDivElement | null>;
 };
 
-export default function AppFooter({ footerRef }: AppFooterProps) {
+export default function AppFooter({ footerRef, contactUsRef }: AppFooterProps) {
   return (
     <FooterContainer ref={footerRef} id="footer-container">
       <Grid
@@ -61,7 +63,13 @@ export default function AppFooter({ footerRef }: AppFooterProps) {
               Om oss
             </Link>
             <Link
-              href="https://www.gatsbyjs.com/"
+              onClick={() =>
+                contactUsRef?.current?.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'end',
+                  inline: 'nearest',
+                })
+              }
               title="Kontakta oss"
               target="_blank"
               rel="noopener noreferrer"
@@ -79,7 +87,7 @@ export default function AppFooter({ footerRef }: AppFooterProps) {
               Jobba hos oss
             </Link>
             <Link
-              href="https://www.gatsbyjs.com/"
+              href="/Policy"
               title="Policy"
               target="_blank"
               rel="noopener noreferrer"

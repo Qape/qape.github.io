@@ -28,7 +28,9 @@ declare module '@mui/material/styles' {
   }
 }
 
-const theme = createTheme({
+export const DEFAULT_PAGE_COLOR = '#122838';
+
+export const theme = createTheme({
   palette: {
     mode: 'light',
   },
@@ -48,7 +50,7 @@ const theme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         colorPrimary: {
-          backgroundColor: '#122838',
+          backgroundColor: DEFAULT_PAGE_COLOR,
         },
       },
     },
@@ -76,7 +78,7 @@ const IndexPage = () => {
       <WorkWithUs />
       <OurCustomers />
       <ContactUs contactUsRef={contactUsRef} />
-      <AppFooter footerRef={footerRef} />
+      <AppFooter footerRef={footerRef} contactUsRef={contactUsRef} />
     </ThemeProvider>
   );
 };

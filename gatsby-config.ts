@@ -38,6 +38,7 @@ const config: GatsbyConfig = {
         ],
       },
     },
+    'gatsby-plugin-provide-react',
     'gatsby-plugin-image',
     {
       resolve: 'gatsby-plugin-manifest',

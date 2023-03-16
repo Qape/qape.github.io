@@ -14,7 +14,8 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { styled } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
-import * as React from 'react';
+import { navigate } from 'gatsby';
+import { MutableRefObject, useEffect, useState } from 'react';
 
 import Logo from '../images/logo.png';
 
@@ -32,22 +33,22 @@ const navItems = [
 ];
 
 type NavigationBarProps = {
-  contactUsRef: React.MutableRefObject<HTMLDivElement | null>;
-  footerRef: React.MutableRefObject<HTMLDivElement | null>;
+  contactUsRef?: MutableRefObject<HTMLDivElement | null>;
+  footerRef?: MutableRefObject<HTMLDivElement | null>;
 };
 
 export default function NavigationBar({
   contactUsRef,
   footerRef,
 }: NavigationBarProps) {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [selectedNavItem, setSelectedNavItem] = React.useState('');
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [selectedNavItem, setSelectedNavItem] = useState('');
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (selectedNavItem === navItemAboutUs) {
       footerRef?.current?.scrollIntoView({
         behavior: 'smooth',
@@ -114,6 +115,10 @@ export default function NavigationBar({
       ? () => window.document.body
       : undefined;
 
+  const navigateHome = () => {
+    return navigate('/');
+  };
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -127,6 +132,7 @@ export default function NavigationBar({
             component="img"
             alt="Company logo"
             src={Logo}
+            onClick={() => navigateHome()}
           />
           <IconButton
             color="inherit"

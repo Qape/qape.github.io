@@ -1,5 +1,4 @@
 import { Box, Card, CardMedia, Typography } from '@mui/material';
-import * as React from 'react';
 import styled from 'styled-components';
 
 import UxDesignImage from '../images/uxdesign.jpg';
@@ -49,7 +48,7 @@ export default function WorkWithUs() {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        padding: '4rem 0',
+        padding: { mobile: '2rem 0', sm: '4rem 0' },
         background: 'whitesmoke',
       }}
     >

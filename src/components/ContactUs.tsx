@@ -12,7 +12,7 @@ import {
   Typography,
 } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
-import * as React from 'react';
+import { ChangeEvent, MutableRefObject, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import styled from 'styled-components';
 
@@ -33,23 +33,23 @@ const ConsentGrid = styled(Grid)`
 `;
 
 type ContactUsProps = {
-  contactUsRef: React.MutableRefObject<HTMLDivElement | null>;
+  contactUsRef: MutableRefObject<HTMLDivElement | null>;
 };
 
 const ContactUs = ({ contactUsRef }: ContactUsProps) => {
-  const [name, setName] = React.useState<TextField | undefined>(undefined);
-  const [phone, setPhone] = React.useState<TextField | undefined>(undefined);
-  const [email, setEmail] = React.useState<TextField | undefined>(undefined);
+  const [name, setName] = useState<TextField | undefined>(undefined);
+  const [phone, setPhone] = useState<TextField | undefined>(undefined);
+  const [email, setEmail] = useState<TextField | undefined>(undefined);
 
-  const [gdprChecked, setGdprChecked] = React.useState(false);
-  const [captchVerified, setCaptchaVerified] = React.useState(false);
+  const [gdprChecked, setGdprChecked] = useState(false);
+  const [captchVerified, setCaptchaVerified] = useState(false);
 
   type TextField = {
     value: string;
     valid?: boolean;
   };
 
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     const val = event.target.value;
 
     if (isEmail(val)) {
@@ -98,7 +98,7 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
       ref={contactUsRef}
       id="box-wrapper"
       sx={{
-        padding: { mobile: '2em 0', sm: '4em' },
+        padding: { mobile: '2em 0', sm: '4rem' },
         display: 'flex',
         flexDirection: { mobile: 'column', laptop: 'row' },
       }}

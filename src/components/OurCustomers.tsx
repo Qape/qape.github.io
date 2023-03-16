@@ -1,5 +1,4 @@
 import { Box, Typography } from '@mui/material';
-import * as React from 'react';
 import styled from 'styled-components';
 
 import GbgstadLogo from '../images/gbgstad-logo.png';
@@ -34,7 +33,7 @@ export default function OurCustomers() {
   const servicesTitle = 'Några av våra kunder';
 
   return (
-    <Box sx={{ padding: '0rem 2rem', background: 'whitesmoke' }}>
+    <Box sx={{ padding: '0 2rem 2rem 2rem', background: 'whitesmoke' }}>
       <InformationSection id="information-section">
         <Typography
           variant="h4"

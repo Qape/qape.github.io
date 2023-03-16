@@ -26,6 +26,8 @@ module.exports = {
     sourceType: 'module', // Allows for the use of imports
   },
   rules: {
+    'no-undef': 'off',
+    'react/react-in-jsx-scope': 'off', // Using React > 17 do not require import of react
     'react/prop-types': 'off', // Disable prop-types as we use TypeScript for type checking
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',

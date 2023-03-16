@@ -1,5 +1,4 @@
 import Typography from '@mui/material/Typography';
-import * as React from 'react';
 
 import BackgroundImage from '../images/keyboard-typing.jpg';
 import HeroLayout from './HeroLayout';

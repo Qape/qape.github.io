@@ -1,15 +1,14 @@
-import { HeadFC, Link } from 'gatsby';
-import * as React from 'react';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { AppBar, Box, Button, ThemeProvider, Toolbar } from '@mui/material';
+import { HeadFC, Link, navigate } from 'gatsby';
 
-const pageStyles = {
-  color: '#232129',
-  padding: '96px',
-  fontFamily: '-apple-system, Roboto, sans-serif, serif',
-};
+import AppFooter from '../components/AppFooter';
+import Logo from '../images/logo.png';
+import { DEFAULT_PAGE_COLOR, theme } from '.';
+
 const headingStyles = {
   marginTop: 0,
   marginBottom: 64,
-  maxWidth: 320,
 };
 
 const paragraphStyles = {
@@ -25,25 +24,82 @@ const codeStyles = {
 
 const NotFoundPage = () => {
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === 'development' ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
+    <>
+      <ThemeProvider theme={theme}>
+        <AppBar
+          component="nav"
+          position="static"
+          sx={{ backgroundColor: DEFAULT_PAGE_COLOR }}
+        >
+          <Toolbar
+            id="toolbar"
+            sx={{ display: 'flex', justifyContent: 'space-between' }}
+          >
+            <Box
+              sx={{ height: 50 }}
+              component="img"
+              alt="Company logo"
+              src={Logo}
+              onClick={() => navigate('/')}
+            />
+          </Toolbar>
+        </AppBar>
+        <Box
+          sx={{
+            padding: '2rem 4rem',
+            height: '100vh',
+            fontFamily: 'Poppins',
+            alignItems: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <Box
+            sx={{
+              background: '#122838',
+              borderRadius: '5px',
+              padding: '1rem',
+              color: 'white',
+              width: '100%',
+            }}
+          >
+            <h1 style={headingStyles}>SIDAN KAN INTE HITTAS</h1>
+            <p style={paragraphStyles}>
+              Hoppsan 😔, sidan du letar efter har antingen flyttats eller
+              tagits bort, vänligen kontrollera webbplatsadressen.
+              <br />
+              {process.env.NODE_ENV === 'development' ? (
+                <>
+                  <br />
+                  Try creating a page in{' '}
+                  <code style={codeStyles}>src/pages/</code>.
+                  <br />
+                </>
+              ) : null}
+              <br />
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: 'white',
+                  ':hover': {
+                    bgcolor: 'whitesmoke',
+                  },
+                }}
+              >
+                <Link to="/" style={{ display: 'flex', color: 'black' }}>
+                  Ta mig till första sidan
+                  <ChevronRightIcon />
+                </Link>
+              </Button>
+            </p>
+          </Box>
+        </Box>
+        <AppFooter />
+      </ThemeProvider>
+    </>
   );
 };
 
 export default NotFoundPage;
 
-export const Head: HeadFC = () => <title>Not found</title>;
+export const Head: HeadFC = () => <title>404 Not found</title>;
