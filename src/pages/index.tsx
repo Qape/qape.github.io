@@ -10,7 +10,6 @@ import Hero from '../components/Hero';
 import NavigationBar from '../components/NavigationBar';
 import OurCustomers from '../components/OurCustomers';
 import WorkWithUs from '../components/WorkWithUs';
-import ScrollToTop from '../components/ScrollToTop';
 
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {
@@ -84,7 +83,6 @@ const IndexPage = () => {
         contactUsRef={contactUsRef}
         defaultColor={DEFAULT_PAGE_COLOR}
       />
-      <ScrollToTop />
     </ThemeProvider>
   );
 };
