@@ -10,6 +10,7 @@ import Hero from '../components/Hero';
 import NavigationBar from '../components/NavigationBar';
 import OurCustomers from '../components/OurCustomers';
 import WorkWithUs from '../components/WorkWithUs';
+import ScrollToTop from '../components/ScrollToTop';
 
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {
@@ -28,7 +29,7 @@ declare module '@mui/material/styles' {
   }
 }
 
-export const DEFAULT_PAGE_COLOR = '#122838';
+const DEFAULT_PAGE_COLOR = '#122838';
 
 export const theme = createTheme({
   palette: {
@@ -78,7 +79,12 @@ const IndexPage = () => {
       <WorkWithUs />
       <OurCustomers />
       <ContactUs contactUsRef={contactUsRef} />
-      <AppFooter footerRef={footerRef} contactUsRef={contactUsRef} />
+      <AppFooter
+        footerRef={footerRef}
+        contactUsRef={contactUsRef}
+        defaultColor={DEFAULT_PAGE_COLOR}
+      />
+      <ScrollToTop />
     </ThemeProvider>
   );
 };

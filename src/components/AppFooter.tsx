@@ -1,14 +1,14 @@
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Box, Grid, Link, Typography } from '@mui/material';
+import { navigate } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 
 import Logo from '../images/logo.png';
-import { DEFAULT_PAGE_COLOR } from '../pages';
 
-const FooterContainer = styled(Box)`
+const FooterContainer = styled(Box)<{ defaultColor?: string | undefined }>`
   display: flex;
-  background: ${DEFAULT_PAGE_COLOR};
+  background: ${(p) => (p?.defaultColor ? p.defaultColor : '#122838')};
   color: white;
   padding: 2rem 1rem;
 `;
@@ -16,11 +16,20 @@ const FooterContainer = styled(Box)`
 type AppFooterProps = {
   footerRef?: React.MutableRefObject<HTMLDivElement | null>;
   contactUsRef?: React.MutableRefObject<HTMLDivElement | null>;
+  defaultColor?: string | undefined;
 };
 
-export default function AppFooter({ footerRef, contactUsRef }: AppFooterProps) {
+export default function AppFooter({
+  footerRef,
+  contactUsRef,
+  defaultColor,
+}: AppFooterProps) {
   return (
-    <FooterContainer ref={footerRef} id="footer-container">
+    <FooterContainer
+      ref={footerRef}
+      id="footer-container"
+      defaultColor={defaultColor}
+    >
       <Grid
         container
         alignItems="flex-start"
@@ -34,6 +43,7 @@ export default function AppFooter({ footerRef, contactUsRef }: AppFooterProps) {
       >
         <Grid item>
           <Box
+            onClick={() => navigate('/')}
             component="img"
             sx={{ height: 50 }}
             alt="Company logo"

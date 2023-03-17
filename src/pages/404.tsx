@@ -4,7 +4,7 @@ import { HeadFC, Link, navigate } from 'gatsby';
 
 import AppFooter from '../components/AppFooter';
 import Logo from '../images/logo.png';
-import { DEFAULT_PAGE_COLOR, theme } from '.';
+import { theme } from '.';
 
 const headingStyles = {
   marginTop: 0,
@@ -29,7 +29,7 @@ const NotFoundPage = () => {
         <AppBar
           component="nav"
           position="static"
-          sx={{ backgroundColor: DEFAULT_PAGE_COLOR }}
+          sx={{ backgroundColor: '#122838' }}
         >
           <Toolbar
             id="toolbar"
