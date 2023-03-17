@@ -1,5 +1,10 @@
 body {
-  overflow-x: hidden;
+  overflow: hidden;
   width: 100%;
   font-family: 'Poppins';
+}
+
+body div:first-child {
+  overflow: hidden;
+  width: 100%;
 }

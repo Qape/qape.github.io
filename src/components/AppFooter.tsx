@@ -6,9 +6,9 @@ import styled from 'styled-components';
 
 import Logo from '../images/logo.png';
 
-const FooterContainer = styled(Box)<{ defaultColor?: string | undefined }>`
+const FooterContainer = styled(Box)<{ defaultcolor?: string | undefined }>`
   display: flex;
-  background: ${(p) => (p?.defaultColor ? p.defaultColor : '#122838')};
+  background: ${(p) => (p?.defaultcolor ? p.defaultcolor : '#122838')};
   color: white;
   padding: 2rem 1rem;
 `;
@@ -24,11 +24,12 @@ export default function AppFooter({
   contactUsRef,
   defaultColor,
 }: AppFooterProps) {
+  const defaultPageColor = defaultColor;
   return (
     <FooterContainer
       ref={footerRef}
       id="footer-container"
-      defaultColor={defaultColor}
+      defaultcolor={defaultPageColor}
     >
       <Grid
         container
