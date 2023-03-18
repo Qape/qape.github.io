@@ -9,7 +9,10 @@ type ScrollToTopProps = {
 
 const ScrollToTop = ({ navigationRef }: ScrollToTopProps) => {
   const trigger = useScrollTrigger({
-    target: window.document.querySelector('back-to-top-anchor') || undefined,
+    target:
+      typeof window !== 'undefined' && window !== undefined
+        ? window.document.querySelector('back-to-top-anchor') || undefined
+        : undefined,
     disableHysteresis: true,
     threshold: 1000,
   });

@@ -128,7 +128,7 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
       </InformationSection>
 
       <Grid container direction="column">
-        <Grid item>
+        <Grid sx={{ maxWidth: { mobile: '100%' } }}>
           <FormWrapper
             id="contact-form"
             className=""
