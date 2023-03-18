@@ -4,6 +4,6 @@ body {
   font-family: 'Poppins';
 }
 
-body div:first-child {
+body > :first-child {
   overflow-x: hidden;
 }

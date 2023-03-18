@@ -41,7 +41,7 @@ const cardInformation = [
 ];
 
 export default function WorkWithUs() {
-  const servicesTitle = 'Vårt kunderbjudande';
+  const servicesTitle = 'Vi erbjuder tjänster inom';
 
   return (
     <Box
@@ -80,12 +80,17 @@ export default function WorkWithUs() {
       <Box
         id="card-wrapper"
         sx={{
-          display: 'flex',
-          alignItems: 'center',
+          display: { mobile: 'flex', sm: 'grid' },
+          gridTemplateColumns: {
+            mobile: 'unset',
+            sm: 'repeat(2, 0fr)',
+            laptopL: 'repeat(4, 0fr)',
+          },
           justifyContent: 'center',
           flexDirection: { mobile: 'column', sm: 'row' },
+          alignItems: { mobile: 'center' },
           columnGap: '2rem',
-          rowGap: { mobile: '2rem', sm: '0' },
+          rowGap: { mobile: '2rem', sm: '1rem' },
           padding: { mobile: '1rem', sm: '2rem' },
         }}
       >
@@ -95,7 +100,12 @@ export default function WorkWithUs() {
               key={card.id}
               sx={{
                 maxWidth: 375,
-                minWidth: { mobile: 250, sm: 350 },
+                minWidth: {
+                  mobile: 250,
+                  sm: 350,
+                  laptopL: 310,
+                  desktop: 450,
+                },
                 ':hover': {
                   boxShadow: 20,
                 },
@@ -121,11 +131,21 @@ export default function WorkWithUs() {
                     opacity: '0.77',
                     color: 'white',
                     padding: '1rem',
-                    minHeight: '8rem',
+                    minHeight: {
+                      mobile: '100%',
+                      tablet: '8rem',
+                      laptopL: '9rem',
+                      desktop: '8rem',
+                    },
                   }}
                 >
                   <Typography variant="h5">{card.title}</Typography>
-                  <Typography variant="body2">{card.subtitle}</Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{ marginTop: { mobile: '1rem', sm: '0' } }}
+                  >
+                    {card.subtitle}
+                  </Typography>
                 </Box>
               </Box>
             </Card>

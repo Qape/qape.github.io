@@ -9,6 +9,7 @@ import ContactUs from '../components/ContactUs';
 import Hero from '../components/Hero';
 import NavigationBar from '../components/NavigationBar';
 import OurCustomers from '../components/OurCustomers';
+import ScrollToTop from '../components/ScrollToTop';
 import WorkWithUs from '../components/WorkWithUs';
 
 declare module '@mui/material/styles' {
@@ -70,14 +71,20 @@ export const theme = createTheme({
 const IndexPage = () => {
   const footerRef = React.useRef<null | HTMLDivElement>(null);
   const contactUsRef = React.useRef<null | HTMLDivElement>(null);
+  const navigationRef = React.useRef<null | HTMLDivElement>(null);
 
   return (
     <ThemeProvider theme={theme}>
-      <NavigationBar contactUsRef={contactUsRef} footerRef={footerRef} />
+      <NavigationBar
+        contactUsRef={contactUsRef}
+        footerRef={footerRef}
+        navigationRef={navigationRef}
+      />
       <Hero />
       <WorkWithUs />
       <OurCustomers />
       <ContactUs contactUsRef={contactUsRef} />
+      <ScrollToTop navigationRef={navigationRef} />
       <AppFooter
         footerRef={footerRef}
         contactUsRef={contactUsRef}

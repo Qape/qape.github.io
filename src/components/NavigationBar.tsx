@@ -35,11 +35,15 @@ const navItems = [
 type NavigationBarProps = {
   contactUsRef?: MutableRefObject<HTMLDivElement | null>;
   footerRef?: MutableRefObject<HTMLDivElement | null>;
+  navigationRef?: MutableRefObject<HTMLDivElement | null>;
+  id?: string;
 };
 
 export default function NavigationBar({
   contactUsRef,
   footerRef,
+  navigationRef,
+  id,
 }: NavigationBarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [selectedNavItem, setSelectedNavItem] = useState('');
@@ -120,11 +124,11 @@ export default function NavigationBar({
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex' }} ref={navigationRef}>
       <CssBaseline />
-      <AppBar component="nav" position="static">
+      <AppBar component="nav" position="static" id={id || 'app-bar'}>
         <Toolbar
-          id="toolbar"
+          id="back-to-top-anchor"
           sx={{ display: 'flex', justifyContent: 'space-between' }}
         >
           <Box

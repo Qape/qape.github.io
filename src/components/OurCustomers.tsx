@@ -5,7 +5,7 @@ import GbgstadLogo from '../images/gbgstad-logo.png';
 import NwgLogo from '../images/nwg-logo.png';
 import TeliaLogo from '../images/telia-logo.png';
 import VGRLogo from '../images/vgr-logo.png';
-import VolvoGroupLogo from '../images/volvogroup-logo.png';
+import VolvoLogo from '../images/volvoLogo.png';
 
 const InformationSection = styled.div`
   margin: 0 1em;
@@ -30,7 +30,7 @@ const ImageBox = styled(Box)`
 `;
 
 export default function OurCustomers() {
-  const servicesTitle = 'Några av våra kunder';
+  const servicesTitle = 'Våra kunder';
 
   return (
     <Box sx={{ padding: '0 2rem 2rem 2rem', background: 'whitesmoke' }}>
@@ -54,11 +54,11 @@ export default function OurCustomers() {
           flexDirection: { mobile: 'column', sm: 'row' },
           justifyContent: 'center',
           minHeight: { mobile: 'auto', sm: '200px' },
-          gap: '3rem',
+          gap: { mobile: '3rem', sm: '1rem', laptopL: '3rem' },
         }}
       >
         <ImageBox>
-          <Box sx={{ maxWidth: '13rem' }}>
+          <Box sx={{ maxWidth: { mobile: '10rem', sm: '10rem' } }}>
             <Image
               loading="lazy"
               alt="TELIA COMPANY"
@@ -68,17 +68,17 @@ export default function OurCustomers() {
           </Box>
         </ImageBox>
         <ImageBox>
-          <Box sx={{ maxWidth: '16rem' }}>
+          <Box sx={{ maxWidth: { mobile: '13rem', sm: '13rem' } }}>
             <Image
               loading="lazy"
               alt="VOLVO GROUP"
-              data-src={VolvoGroupLogo}
-              src={VolvoGroupLogo}
+              data-src={VolvoLogo}
+              src={VolvoLogo}
             />
           </Box>
         </ImageBox>
         <ImageBox>
-          <Box sx={{ maxWidth: '16rem' }}>
+          <Box sx={{ maxWidth: { mobile: '13rem', sm: '11rem' } }}>
             <Image
               loading="lazy"
               alt="Intraservice"
@@ -88,12 +88,12 @@ export default function OurCustomers() {
           </Box>
         </ImageBox>
         <ImageBox>
-          <Box sx={{ maxWidth: '16rem' }}>
+          <Box sx={{ maxWidth: { mobile: '13rem', sm: '16rem' } }}>
             <Image loading="lazy" alt="VGR" data-src={VGRLogo} src={VGRLogo} />
           </Box>
         </ImageBox>
         <ImageBox>
-          <Box sx={{ maxWidth: '16rem' }}>
+          <Box sx={{ maxWidth: { mobile: '13rem', sm: '16rem' } }}>
             <Image
               loading="lazy"
               alt="New wave group"
