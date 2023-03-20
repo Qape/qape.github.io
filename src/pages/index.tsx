@@ -26,6 +26,7 @@ declare module '@mui/material/styles' {
     laptop: true;
     laptopL: true;
     desktop: true;
+    desktopL: true;
   }
 }
 
@@ -45,6 +46,7 @@ export const theme = createTheme({
       laptop: 1024,
       laptopL: 1440,
       desktop: 2560,
+      desktopL: 3840,
     },
   },
   components: {
