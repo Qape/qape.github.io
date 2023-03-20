@@ -69,7 +69,13 @@ export default function WorkWithUs() {
           align="center"
           sx={{
             marginBottom: '2rem',
-            margin: { mobile: '0rem', sm: '2rem 15rem', desktop: '2rem 40rem' },
+            margin: {
+              mobile: '0rem',
+              tablet: '2rem 2rem',
+              laptop: '2rem 10rem',
+              laptopL: '2rem 15rem',
+              desktop: '2rem 40rem',
+            },
           }}
         >
           Vi på Qape strävar efter att vara branschens bästa leverantör av IT
@@ -132,8 +138,7 @@ export default function WorkWithUs() {
                     color: 'white',
                     padding: '1rem',
                     minHeight: {
-                      mobile: '100%',
-                      tablet: '8rem',
+                      mobile: '8rem',
                       laptopL: '9rem',
                       desktop: '8rem',
                     },
