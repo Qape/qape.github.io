@@ -1,34 +1,67 @@
+import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
+import { MutableRefObject } from 'react';
 
-import BackgroundImage from '../images/keyboard-typing.jpg';
+import BackgroundImage from '../images/homeHero.png';
 import HeroLayout from './HeroLayout';
 
-export default function ProductHero() {
+type ProductHeroProps = {
+  contactUsRef?: MutableRefObject<HTMLDivElement | null>;
+};
+
+export default function ProductHero({ contactUsRef }: ProductHeroProps) {
   return (
     <HeroLayout
       sxBackground={{
         backgroundImage: `url(${BackgroundImage})`,
         backgroundColor: '#7fc7d9', // Average color of the background image.
         backgroundPosition: 'center',
-        backgroundBlendMode: 'hard-light',
       }}
     >
       <Typography
         data-testid="typography-qape"
-        variant="h3"
         gutterBottom={true}
         sx={{
           mr: 1,
-          fontFamily: 'monospace',
-          fontWeight: 700,
-          letterSpacing: '.3rem',
           color: 'inherit',
           textDecoration: 'none',
+          textAlign: 'center',
+          marginRight: 0,
+          padding: { mobile: '2rem', sm: '3rem' },
+          typography: {
+            mobile: 'h6',
+            sm: 'h4',
+            desktop: 'h2',
+          },
+          fontWeight: '500 !important',
         }}
       >
-        QaPe
+        Ditt innovativa IT-bolag för digital transformation och
+        mjukvaruutveckling.
       </Typography>
-      peoples.filter(isDeveloper).every(sendEmailToUs)
+      <Button
+        size="large"
+        sx={{
+          color: 'white',
+          border: '1px solid white',
+          '&:hover': {
+            backgroundColor: '#fff',
+            color: '#122838',
+            border: '1px solid white',
+          },
+        }}
+        color="primary"
+        variant="outlined"
+        onClick={() =>
+          contactUsRef?.current?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'end',
+            inline: 'nearest',
+          })
+        }
+      >
+        Kom i kontakt
+      </Button>
     </HeroLayout>
   );
 }

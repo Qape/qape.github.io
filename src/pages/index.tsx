@@ -80,7 +80,7 @@ const IndexPage = () => {
         footerRef={footerRef}
         navigationRef={navigationRef}
       />
-      <Hero />
+      <Hero contactUsRef={contactUsRef} />
       <WorkWithUs />
       <OurCustomers />
       <ContactUs contactUsRef={contactUsRef} />

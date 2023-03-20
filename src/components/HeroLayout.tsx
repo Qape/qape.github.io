@@ -4,17 +4,38 @@ import { styled, Theme } from '@mui/material/styles';
 import { SxProps } from '@mui/system';
 import * as React from 'react';
 
-const HeroLayoutRoot = styled('section')(({ theme }) => ({
-  color: theme.palette.common.white,
-  position: 'relative',
-  display: 'flex',
-  alignItems: 'center',
-  [theme.breakpoints.up('tablet')]: {
-    height: '80vh',
+const HeroLayoutRoot = styled('section')(({ theme }) => {
+  return {
+    color: theme.palette.common.white,
+    position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+    height: '70vh',
     minHeight: 500,
     maxHeight: 1300,
-  },
-}));
+
+    [theme.breakpoints.down('desktop')]: {
+      height: '60vh',
+      minHeight: 500,
+      maxHeight: 1300,
+    },
+    [theme.breakpoints.down('laptopL')]: {
+      height: '50vh',
+      minHeight: 500,
+      maxHeight: 1300,
+    },
+    [theme.breakpoints.down('laptop')]: {
+      height: '40vh',
+      minHeight: 500,
+      maxHeight: 1300,
+    },
+    [theme.breakpoints.down('sm')]: {
+      height: 'auto',
+      minHeight: 300,
+      maxHeight: 800,
+    },
+  };
+});
 
 const Background = styled(Box)({
   position: 'absolute',
@@ -39,7 +60,10 @@ export default function HeroLayout(
   return (
     <HeroLayoutRoot>
       <Container
+        id="hero-container"
         sx={{
+          marginBottom: { mobile: 0, sm: 0, desktop: 0 },
+          marginTop: { mobile: 0, sm: 0, desktop: 0 },
           mt: 3,
           mb: 14,
           display: 'flex',
@@ -55,8 +79,6 @@ export default function HeroLayout(
             right: 0,
             top: 0,
             bottom: 0,
-            backgroundColor: 'common.black',
-            opacity: 0.5,
             zIndex: -1,
           }}
         />
