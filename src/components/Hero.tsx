@@ -42,12 +42,12 @@ export default function ProductHero({ contactUsRef }: ProductHeroProps) {
       <Button
         size="large"
         sx={{
-          color: 'white',
-          border: '1px solid white',
+          color: '#fff',
+          border: '1px solid #fff',
           '&:hover': {
             backgroundColor: '#fff',
             color: '#122838',
-            border: '1px solid white',
+            border: '1px solid #fff',
           },
         }}
         color="primary"
