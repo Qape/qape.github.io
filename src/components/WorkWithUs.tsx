@@ -1,8 +1,10 @@
 import { Box, Card, CardMedia, Typography } from '@mui/material';
 import styled from 'styled-components';
 
-import UxDesignImage from '../images/uxdesign.jpg';
-import BackgroundImage from '../images/workwithus.jpg';
+import SoftwareArchitectImg from '../images/aaronArchitect.jpeg';
+import SoftwareDevelopmentImg from '../images/software-development.jpeg';
+import SoftwareTestingImg from '../images/software-testing.jpeg';
+import UxDesignersImage from '../images/uxDesigners.jpeg';
 
 const InformationSection = styled.div`
   margin: 0 1em;
@@ -15,28 +17,28 @@ const cardInformation = [
     title: 'Systemuteckling',
     subtitle:
       'Våra erfarna konsulter bygger robusta och innovativa lösningar med fokus på hög kvalite utifrån dina affärsbehov.',
-    image: BackgroundImage,
+    image: SoftwareDevelopmentImg,
   },
   {
     id: '2',
     title: 'Test',
     subtitle:
       'Vi hjälper din organisation med testning som identifierar utmaningar – innan de blir ett problem.',
-    image: BackgroundImage,
+    image: SoftwareTestingImg,
   },
   {
     id: '3',
     title: 'Arkitektur',
     subtitle:
       'Våra arkitekter är experter på att hitta rätt dimension och balans i lösningen. Vi hjälper dig till rätt lösning för din organisation.',
-    image: BackgroundImage,
+    image: SoftwareArchitectImg,
   },
   {
     id: '4',
     title: 'UX-design',
     subtitle:
       'Vi kan vägleda, ge dig kloka råd och insikter samt säkerställa att gränssnittet blir som du förväntar dig och som möter dina behov',
-    image: UxDesignImage,
+    image: UxDesignersImage,
   },
 ];
 
