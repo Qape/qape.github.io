@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { MutableRefObject } from 'react';
 
-import BackgroundImage from '../images/homeHero.png';
+import BackgroundImage from '../images/homeHero.jpeg';
 import HeroLayout from './HeroLayout';
 
 type ProductHeroProps = {
@@ -14,7 +14,7 @@ export default function ProductHero({ contactUsRef }: ProductHeroProps) {
     <HeroLayout
       sxBackground={{
         backgroundImage: `url(${BackgroundImage})`,
-        backgroundColor: '#7fc7d9', // Average color of the background image.
+        backgroundColor: '#122838', // Average color of the background image.
         backgroundPosition: 'center',
       }}
     >

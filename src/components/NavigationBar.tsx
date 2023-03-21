@@ -88,6 +88,11 @@ export default function NavigationBar({
           id="close-button"
           onClick={handleDrawerToggle}
           aria-label="stänga meny"
+          sx={{
+            ':hover': {
+              bgcolor: '#1c374b',
+            },
+          }}
         >
           <Typography color="white" variant="body2">
             STÄNG

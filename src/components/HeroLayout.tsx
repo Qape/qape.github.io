@@ -10,24 +10,24 @@ const HeroLayoutRoot = styled('section')(({ theme }) => {
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
-    height: '70vh',
+    height: '100vh',
     minHeight: 500,
     maxHeight: 1900,
 
     [theme.breakpoints.down('desktop')]: {
-      height: '60vh',
+      height: '95vh',
       minHeight: 500,
-      maxHeight: 1300,
+      maxHeight: 1900,
     },
     [theme.breakpoints.down('laptopL')]: {
-      height: '50vh',
+      height: '65vh',
       minHeight: 500,
-      maxHeight: 1300,
+      maxHeight: 1200,
     },
     [theme.breakpoints.down('laptop')]: {
-      height: '40vh',
+      height: '45vh',
       minHeight: 500,
-      maxHeight: 1300,
+      maxHeight: 1200,
     },
     [theme.breakpoints.down('sm')]: {
       height: 'auto',
