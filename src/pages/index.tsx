@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import type { HeadFC } from 'gatsby';
 import * as React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import AppFooter from '../components/AppFooter';
 import ContactUs from '../components/ContactUs';
@@ -70,29 +71,33 @@ export const theme = createTheme({
   },
 });
 
+const queryClient = new QueryClient();
+
 const IndexPage = () => {
   const footerRef = React.useRef<null | HTMLDivElement>(null);
   const contactUsRef = React.useRef<null | HTMLDivElement>(null);
   const navigationRef = React.useRef<null | HTMLDivElement>(null);
 
   return (
-    <ThemeProvider theme={theme}>
-      <NavigationBar
-        contactUsRef={contactUsRef}
-        footerRef={footerRef}
-        navigationRef={navigationRef}
-      />
-      <Hero contactUsRef={contactUsRef} />
-      <WorkWithUs />
-      <OurCustomers />
-      <ContactUs contactUsRef={contactUsRef} />
-      <ScrollToTop navigationRef={navigationRef} />
-      <AppFooter
-        footerRef={footerRef}
-        contactUsRef={contactUsRef}
-        defaultColor={DEFAULT_PAGE_COLOR}
-      />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <NavigationBar
+          contactUsRef={contactUsRef}
+          footerRef={footerRef}
+          navigationRef={navigationRef}
+        />
+        <Hero contactUsRef={contactUsRef} />
+        <WorkWithUs />
+        <OurCustomers />
+        <ContactUs contactUsRef={contactUsRef} />
+        <ScrollToTop navigationRef={navigationRef} />
+        <AppFooter
+          footerRef={footerRef}
+          contactUsRef={contactUsRef}
+          defaultColor={DEFAULT_PAGE_COLOR}
+        />
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 };
 
