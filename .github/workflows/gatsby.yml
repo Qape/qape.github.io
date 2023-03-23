@@ -75,11 +75,10 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Gatsby
-        run: echo ${{ secrets.REACT_APP_SITE_KEY }} | base64 -d > .env.production
         env:
           PREFIX_PATHS: 'true'
-          REACT_APP_SITE_KEY: ${{ secrets.REACT_APP_SITE_KEY }}
-        run: ${{ steps.detect-package-manager.outputs.manager }} run build
+          REACT_APP_SITE_KEY: '${{ secrets.REACT_APP_SITE_KEY }}'
+        run: echo ${{ secrets.REACT_APP_SITE_KEY }} | base64 -d > .env.production ${{ steps.detect-package-manager.outputs.manager }} run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
