@@ -51,8 +51,6 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
     valid?: boolean;
   };
 
-  console.log({ KEY: process.env.REACT_APP_SITE_KEY });
-
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     const val = event.target.value;
 
@@ -107,8 +105,6 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
   const { data, refetch } = useQuery('success', verifyCaptcha, {
     enabled: false,
   });
-
-  console.log('data', data);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
