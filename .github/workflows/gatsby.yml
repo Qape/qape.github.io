@@ -74,12 +74,6 @@ jobs:
             ${{ runner.os }}-gatsby-build-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Create env file
-        run: |
-          touch .env.production
-          echo API_KEY=${{ secrets.REACT_APP_SITE_KEY }} >> .env.production
-          echo $REACT_APP_SITE_KEY | base64 -d >> .env.production
-          cat .env.production
       - name: Build with Gatsby
         env:
           PREFIX_PATHS: 'true'
