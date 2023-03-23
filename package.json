@@ -30,6 +30,7 @@
     "babel-plugin-styled-components": "^2.0.7",
     "gatsby": "^4.24.4",
     "gatsby-omni-font-loader": "^2.0.2",
+    "gatsby-plugin-env-variables": "^2.3.0",
     "gatsby-plugin-google-analytics": "^4.24.0",
     "gatsby-plugin-image": "^2.24.0",
     "gatsby-plugin-manifest": "^4.24.0",
