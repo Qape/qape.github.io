@@ -3,6 +3,10 @@ import type { GatsbyConfig } from 'gatsby';
 
 dotenv.config({ path: __dirname + `/.env.${process.env.NODE_ENV}` });
 
+console.log({ path: __dirname + `/.env.${process.env.NODE_ENV}` });
+console.log(process.env.REACT_APP_SITE_KEY);
+console.log({ KEY: process.env.REACT_APP_SITE_KEY });
+
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Qape`,

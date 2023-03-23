@@ -14,6 +14,7 @@ import {
 import Checkbox from '@mui/material/Checkbox';
 import { ChangeEvent, MutableRefObject, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { useQuery } from 'react-query';
 import styled from 'styled-components';
 
 import { isEmail, isMobilePhoneNumber } from './utils/Regex.util';
@@ -43,11 +44,14 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
 
   const [gdprChecked, setGdprChecked] = useState(false);
   const [captchVerified, setCaptchaVerified] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>('');
 
   type TextField = {
     value: string;
     valid?: boolean;
   };
+
+  console.log({ KEY: process.env.REACT_APP_SITE_KEY });
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     const val = event.target.value;
@@ -81,7 +85,30 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
 
   const handleCaptchaOnChange = (token: string | null) => {
     setCaptchaVerified(Boolean(token));
+    setCaptchaToken(token);
   };
+
+  const verifyCaptcha = async () => {
+    const res = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify({
+        response: captchaToken,
+        secret: process.env.REACT_APP_SITE_KEY,
+      }),
+    });
+    return res.json();
+  };
+
+  // Using the hook
+  const { data, refetch } = useQuery('success', verifyCaptcha, {
+    enabled: false,
+  });
+
+  console.log('data', data);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -90,7 +117,9 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
     setName(undefined);
     setPhone(undefined);
     setEmail(undefined);
+
     // CALL ENDPOINT FOR SENDING EMAIL
+    refetch();
   };
 
   return (
