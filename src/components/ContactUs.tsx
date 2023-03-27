@@ -88,19 +88,18 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
 
   const sendEmail = async () => {
     const res = await fetch(
-      'https://wkiu0ov1ya.execute-api.eu-north-1.amazonaws.com/default/qape-dev-contact-form',
+      'https://y0nvymqx7f.execute-api.eu-north-1.amazonaws.com/v1/qape-dev-contact-form',
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
         },
         body: JSON.stringify({
           token: captchaToken,
           subject: 'Kund förfrågan',
-          email,
-          name,
-          phone,
+          email: email?.value,
+          name: name?.value,
+          phone: phone?.value,
         }),
       }
     );
