@@ -117,6 +117,10 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
     data,
   });
 
+  console.log({
+    captchaToken,
+  });
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setCaptchaVerified(false);
