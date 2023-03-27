@@ -111,6 +111,8 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
     data,
   });
 
+  console.log({ KEY: process.env.REACT_APP_SITE_KEY });
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setCaptchaVerified(false);
