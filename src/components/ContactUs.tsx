@@ -86,32 +86,36 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
     setCaptchaToken(token);
   };
 
-  const verifyCaptcha = async () => {
-    const res = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-      body: JSON.stringify({
-        response: captchaToken,
-        secret: process.env.REACT_APP_SITE_KEY,
-      }),
-    });
+  const sendEmail = async () => {
+    const res = await fetch(
+      ' https://wkiu0ov1ya.execute-api.eu-north-1.amazonaws.com/default/qape-dev-contact-form',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify({
+          token: captchaToken,
+          subject: 'Kund förfrågan',
+          email,
+          name,
+          phone,
+        }),
+      }
+    );
 
     return res.json();
   };
 
   // Using the hook
-  const { data, refetch } = useQuery('success', verifyCaptcha, {
+  const { data, refetch } = useQuery('success', sendEmail, {
     enabled: false,
   });
 
   console.log({
     data,
   });
-
-  console.log({ KEY: process.env.REACT_APP_SITE_KEY });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
