@@ -98,12 +98,17 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
         secret: process.env.REACT_APP_SITE_KEY,
       }),
     });
+
     return res.json();
   };
 
   // Using the hook
   const { data, refetch } = useQuery('success', verifyCaptcha, {
     enabled: false,
+  });
+
+  console.log({
+    data,
   });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
