@@ -88,7 +88,7 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
 
   const sendEmail = async () => {
     const res = await fetch(
-      ' https://wkiu0ov1ya.execute-api.eu-north-1.amazonaws.com/default/qape-dev-contact-form',
+      'https://wkiu0ov1ya.execute-api.eu-north-1.amazonaws.com/default/qape-dev-contact-form',
       {
         method: 'POST',
         headers: {
