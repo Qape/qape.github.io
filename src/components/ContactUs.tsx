@@ -1,3 +1,6 @@
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import PersonIcon from '@mui/icons-material/Person';
+import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import {
   Box,
   Button,
@@ -8,16 +11,13 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { ChangeEvent, MutableRefObject, useState } from 'react';
-import { isEmail, isMobilePhoneNumber } from './utils/Regex.util';
-
-import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import Checkbox from '@mui/material/Checkbox';
-import PersonIcon from '@mui/icons-material/Person';
-import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
+import { ChangeEvent, MutableRefObject, useEffect, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
-import styled from 'styled-components';
 import { useQuery } from 'react-query';
+import styled from 'styled-components';
+
+import { isEmail, isMobilePhoneNumber } from './utils/Regex.util';
 
 const FormWrapper = styled.form`
   margin: 2em;
@@ -106,23 +106,33 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
       }
     );
 
-    return res.json();
+    console.log('RES', res);
+    console.log('RES OK---', res.ok);
+
+    const response = await res.json();
+    return response;
   };
 
-  // Using the hook
-  const { data, refetch } = useQuery('success', sendEmail, {
-    enabled: false,
-  });
+  const [isFetched, setIsFetched] = useState<boolean>(false);
 
-  console.log({
-    data,
+  // Using the hook
+  const { data, status, error } = useQuery('success', sendEmail, {
+    enabled: isFetched,
   });
 
   console.log({
     captchaToken,
   });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  useEffect(() => {
+    console.log('data', data);
+    console.log('status', status);
+    console.log('error', error);
+
+    setIsFetched(false);
+  }, [status]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setCaptchaVerified(false);
     setGdprChecked(false);
@@ -130,8 +140,7 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
     setPhone(undefined);
     setEmail(undefined);
 
-    // CALL ENDPOINT FOR SENDING EMAIL
-    refetch();
+    !isFetched && setIsFetched(true);
   };
 
   return (
@@ -296,7 +305,10 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
                 type="submit"
                 color="primary"
                 variant="contained"
-                disabled={!captchVerified || !gdprChecked}
+                disabled={
+                  (!captchVerified && process.env.NODE_ENV !== 'development') ||
+                  !gdprChecked
+                }
               >
                 Skicka
               </Button>
