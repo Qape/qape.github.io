@@ -112,9 +112,8 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
 
     console.log('RES OK---', res.ok);
 
-    const response = await res.json();
-    console.log({ response });
-    return response;
+    console.log({ res });
+    return res;
   };
 
   const [isFetched, setIsFetched] = useState<boolean>(false);
