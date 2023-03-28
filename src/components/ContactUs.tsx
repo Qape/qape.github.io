@@ -106,41 +106,51 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
       }
     );
 
-    console.log('RES', res);
+    if (!res.ok) {
+      return { error: 'Failed to fetch' };
+    }
+
     console.log('RES OK---', res.ok);
 
     const response = await res.json();
+    console.log({ response });
     return response;
   };
 
   const [isFetched, setIsFetched] = useState<boolean>(false);
 
-  // Using the hook
-  const { data, status, error } = useQuery('success', sendEmail, {
-    enabled: isFetched,
-  });
-
-  console.log({
-    captchaToken,
-  });
+  const { data, status, error, refetch, isFetching } = useQuery(
+    'status',
+    sendEmail,
+    {
+      enabled: isFetched,
+      refetchOnWindowFocus: false,
+      retry: false,
+    }
+  );
 
   useEffect(() => {
-    console.log('data', data);
+    console.log('data', { data });
     console.log('status', status);
     console.log('error', error);
 
     setIsFetched(false);
-  }, [status]);
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
     setCaptchaVerified(false);
     setGdprChecked(false);
     setName(undefined);
     setPhone(undefined);
     setEmail(undefined);
+  }, [isFetching]);
 
-    !isFetched && setIsFetched(true);
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
+  const handleOnSubmitEmailRequest = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    refetch();
   };
 
   return (
@@ -305,6 +315,7 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
                 type="submit"
                 color="primary"
                 variant="contained"
+                onClick={(event) => handleOnSubmitEmailRequest(event)}
                 disabled={
                   (!captchVerified && process.env.NODE_ENV !== 'development') ||
                   !gdprChecked
