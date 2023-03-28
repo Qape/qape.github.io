@@ -112,9 +112,6 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
       return { error: 'Failed to fetch' };
     }
 
-    console.log('RES OK---', res.ok);
-
-    console.log({ res });
     return res;
   };
 
@@ -132,11 +129,7 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
     setEmail(undefined);
   }, [isFetching]);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  };
-
-  const handleOnSubmitEmailRequest = (
+  const handleOnEmailRequestClick = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
@@ -146,7 +139,7 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
   const renderEmailMessage = () => {
     if (status === 'success') {
       return (
-        <Box sx={{ marginTop: '1rem' }}>
+        <Box sx={{ margin: '2em' }}>
           <Alert severity="success">
             <AlertTitle>Tack för ditt mejl</AlertTitle>
             Vi besvarar din förfrågan så fort vi kan, ha en fortsatt trevlig
@@ -156,7 +149,7 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
       );
     } else if (status === 'error') {
       return (
-        <Box sx={{ marginTop: '1rem' }}>
+        <Box sx={{ margin: '2em' }}>
           <Alert severity="error">
             <AlertTitle>Tekniskt fel</AlertTitle>
             Din förfrågan kunde inte skickas. Var god och försök igen om en
@@ -205,143 +198,146 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
 
       <Grid container direction="column">
         <Grid sx={{ maxWidth: { mobile: '100%' } }}>
-          <FormWrapper
-            id="contact-form"
-            className=""
-            onSubmit={(e) => {
-              handleSubmit(e);
-            }}
-          >
-            <Box id="contact-field-wrapper">
-              <TextField
-                id="name"
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <PersonIcon />
-                    </InputAdornment>
-                  ),
-                }}
-                required
-                label="Namn"
-                error={name?.value === ''}
-                helperText={name?.value === '' ? 'Fyll i namn' : ''}
-                name="userName"
-                inputProps={{ maxLength: 30 }}
-                onChange={(e) => {
-                  setName({ value: e.target.value, valid: true });
-                }}
-                variant="standard"
-                margin="normal"
-                fullWidth
-              />
-              <TextField
-                id="phonenumber"
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <PhoneIphoneIcon />
-                    </InputAdornment>
-                  ),
-                }}
-                required
-                label="Telefon"
-                error={
-                  phone?.value === '' ||
-                  (phone?.valid !== undefined && phone?.valid === false)
-                }
-                helperText={
-                  phone?.value === ''
-                    ? 'Fyll i telefonnummer'
-                    : phone?.valid !== undefined && phone?.valid === false
-                    ? 'Ogiltigt telefonnummer, vänligen kontrollera formatet på telefonnumret'
-                    : ''
-                }
-                name="phone"
-                inputProps={{ maxLength: 12 }}
-                onChange={(e) => {
-                  setPhone({ value: e.target.value });
-                }}
-                onBlur={handlePhoneNumberBlur}
-                variant="standard"
-                margin="normal"
-                fullWidth
-              />
-              <TextField
-                id="email"
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <AlternateEmailIcon />
-                    </InputAdornment>
-                  ),
-                }}
-                required
-                variant="standard"
-                label="E-post"
-                name="email"
-                error={
-                  email?.value === '' ||
-                  (email?.valid !== undefined && email?.valid === false)
-                }
-                helperText={
-                  email?.value === ''
-                    ? 'Fyll i mejladress'
-                    : email?.valid !== undefined && email?.valid === false
-                    ? 'Ogiltig mejladress använd formatet din@epostadress.se'
-                    : ''
-                }
-                onChange={handleEmailChange}
-                onBlur={handleEmailBlur}
-                margin="normal"
-                fullWidth
-              />
-            </Box>
-            <ConsentGrid>
-              <FormGroup sx={{ marginBottom: '2em' }}>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      required
-                      sx={{
-                        justifyContent: 'flex-start',
-                      }}
-                      inputProps={{ 'aria-label': 'controlled' }}
-                      checked={gdprChecked}
-                      onChange={(e) => setGdprChecked(e?.target.checked)}
-                    />
+          {status !== 'success' && (
+            <FormWrapper
+              id="contact-form"
+              className=""
+              onSubmit={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <Box id="contact-field-wrapper">
+                <TextField
+                  id="name"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <PersonIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                  required
+                  label="Namn"
+                  error={name?.value === ''}
+                  helperText={name?.value === '' ? 'Fyll i namn' : ''}
+                  name="userName"
+                  inputProps={{ maxLength: 30 }}
+                  onChange={(e) => {
+                    setName({ value: e.target.value, valid: true });
+                  }}
+                  variant="standard"
+                  margin="normal"
+                  fullWidth
+                />
+                <TextField
+                  id="phonenumber"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <PhoneIphoneIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                  required
+                  label="Telefon"
+                  error={
+                    phone?.value === '' ||
+                    (phone?.valid !== undefined && phone?.valid === false)
                   }
-                  label="Jag godkänner att mina personuppgifter lagras"
+                  helperText={
+                    phone?.value === ''
+                      ? 'Fyll i telefonnummer'
+                      : phone?.valid !== undefined && phone?.valid === false
+                      ? 'Ogiltigt telefonnummer, vänligen kontrollera formatet på telefonnumret'
+                      : ''
+                  }
+                  name="phone"
+                  inputProps={{ maxLength: 12 }}
+                  onChange={(e) => {
+                    setPhone({ value: e.target.value });
+                  }}
+                  onBlur={handlePhoneNumberBlur}
+                  variant="standard"
+                  margin="normal"
+                  fullWidth
                 />
-                <i>
-                  <Typography variant="body1" gutterBottom>
-                    Läs mer om hur vi på Qape använder dina{' '}
-                    <a href="">Personuppgifter</a>
-                  </Typography>
-                </i>
-              </FormGroup>
-              {process.env.REACT_APP_SITE_KEY && (
-                <ReCAPTCHA
-                  sitekey={process.env.REACT_APP_SITE_KEY}
-                  onChange={handleCaptchaOnChange}
+                <TextField
+                  id="email"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <AlternateEmailIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                  required
+                  variant="standard"
+                  label="E-post"
+                  name="email"
+                  error={
+                    email?.value === '' ||
+                    (email?.valid !== undefined && email?.valid === false)
+                  }
+                  helperText={
+                    email?.value === ''
+                      ? 'Fyll i mejladress'
+                      : email?.valid !== undefined && email?.valid === false
+                      ? 'Ogiltig mejladress använd formatet din@epostadress.se'
+                      : ''
+                  }
+                  onChange={handleEmailChange}
+                  onBlur={handleEmailBlur}
+                  margin="normal"
+                  fullWidth
                 />
-              )}
-              <Button
-                sx={{ marginTop: '2em' }}
-                type="submit"
-                color="primary"
-                variant="contained"
-                onClick={(event) => handleOnSubmitEmailRequest(event)}
-                disabled={
-                  (!captchVerified && process.env.NODE_ENV !== 'development') ||
-                  !gdprChecked
-                }
-              >
-                Skicka
-              </Button>
-              {renderEmailMessage()}
-            </ConsentGrid>
-          </FormWrapper>
+              </Box>
+              <ConsentGrid>
+                <FormGroup sx={{ marginBottom: '2em' }}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        required
+                        sx={{
+                          justifyContent: 'flex-start',
+                        }}
+                        inputProps={{ 'aria-label': 'controlled' }}
+                        checked={gdprChecked}
+                        onChange={(e) => setGdprChecked(e?.target.checked)}
+                      />
+                    }
+                    label="Jag godkänner att mina personuppgifter lagras"
+                  />
+                  <i>
+                    <Typography variant="body1" gutterBottom>
+                      Läs mer om hur vi på Qape använder dina{' '}
+                      <a href="">Personuppgifter</a>
+                    </Typography>
+                  </i>
+                </FormGroup>
+                {process.env.REACT_APP_SITE_KEY && (
+                  <ReCAPTCHA
+                    sitekey={process.env.REACT_APP_SITE_KEY}
+                    onChange={handleCaptchaOnChange}
+                  />
+                )}
+                <Button
+                  sx={{ marginTop: '2em' }}
+                  type="submit"
+                  color="primary"
+                  variant="contained"
+                  onClick={(event) => handleOnEmailRequestClick(event)}
+                  disabled={
+                    (!captchVerified &&
+                      process.env.NODE_ENV !== 'development') ||
+                    !gdprChecked
+                  }
+                >
+                  Skicka
+                </Button>
+              </ConsentGrid>
+            </FormWrapper>
+          )}
+          {renderEmailMessage()}
         </Grid>
       </Grid>
     </Box>
