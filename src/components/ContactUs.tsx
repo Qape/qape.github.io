@@ -2,6 +2,8 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PersonIcon from '@mui/icons-material/Person';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import {
+  Alert,
+  AlertTitle,
   Box,
   Button,
   FormControlLabel,
@@ -116,24 +118,13 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
     return res;
   };
 
-  const [isFetched, setIsFetched] = useState<boolean>(false);
-
-  const { data, status, error, refetch, isFetching } = useQuery(
-    'status',
-    sendEmail,
-    {
-      enabled: isFetched,
-      refetchOnWindowFocus: false,
-      retry: false,
-    }
-  );
+  const { status, refetch, isFetching } = useQuery('status', sendEmail, {
+    enabled: false,
+    refetchOnWindowFocus: false,
+    retry: false,
+  });
 
   useEffect(() => {
-    console.log('data', { data });
-    console.log('status', status);
-    console.log('error', error);
-
-    setIsFetched(false);
     setCaptchaVerified(false);
     setGdprChecked(false);
     setName(undefined);
@@ -150,6 +141,32 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
   ) => {
     e.preventDefault();
     refetch();
+  };
+
+  const renderEmailMessage = () => {
+    if (status === 'success') {
+      return (
+        <Box sx={{ marginTop: '1rem' }}>
+          <Alert severity="success">
+            <AlertTitle>Tack för ditt mejl</AlertTitle>
+            Vi besvarar din förfrågan så fort vi kan, ha en fortsatt trevlig
+            dag!
+          </Alert>
+        </Box>
+      );
+    } else if (status === 'error') {
+      return (
+        <Box sx={{ marginTop: '1rem' }}>
+          <Alert severity="error">
+            <AlertTitle>Tekniskt fel</AlertTitle>
+            Din förfrågan kunde inte skickas. Var god och försök igen om en
+            stund.
+          </Alert>
+        </Box>
+      );
+    }
+
+    return null;
   };
 
   return (
@@ -322,6 +339,7 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
               >
                 Skicka
               </Button>
+              {renderEmailMessage()}
             </ConsentGrid>
           </FormWrapper>
         </Grid>
