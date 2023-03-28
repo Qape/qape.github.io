@@ -132,7 +132,7 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
     setIsFetched(false);
   }, [status]);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setCaptchaVerified(false);
     setGdprChecked(false);
