@@ -1,10 +1,11 @@
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Box, Grid, Link, Typography } from '@mui/material';
 import { navigate } from 'gatsby';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Logo from '../images/logo.png';
+import PolicyModal from './PolicyModal';
 
 const FooterContainer = styled(Box)<{ defaultcolor?: string | undefined }>`
   display: flex;
@@ -25,12 +26,21 @@ export default function AppFooter({
   defaultColor,
 }: AppFooterProps) {
   const defaultPageColor = defaultColor;
+
+  const [openPolicyModal, setOpenPolicyModal] = useState<boolean | undefined>(
+    undefined
+  );
+
   return (
     <FooterContainer
       ref={footerRef}
       id="footer-container"
       defaultcolor={defaultPageColor}
     >
+      <PolicyModal
+        openPolicyModal={openPolicyModal}
+        setOpenPolicyModal={setOpenPolicyModal}
+      />
       <Grid
         container
         alignItems="flex-start"
@@ -69,7 +79,7 @@ export default function AppFooter({
               title="Om oss"
               target="_blank"
               rel="noopener noreferrer"
-              sx={{ marginRight: 1 }}
+              sx={{ marginRight: 1, cursor: 'pointer' }}
             >
               Om oss
             </Link>
@@ -84,7 +94,7 @@ export default function AppFooter({
               title="Kontakta oss"
               target="_blank"
               rel="noopener noreferrer"
-              sx={{ marginRight: 1 }}
+              sx={{ marginRight: 1, cursor: 'pointer' }}
             >
               Kontakta oss
             </Link>
@@ -98,11 +108,11 @@ export default function AppFooter({
               Jobba hos oss
             </Link>
             <Link
-              href="/Policy"
+              onClick={() => setOpenPolicyModal(true)}
               title="Policy"
               target="_blank"
               rel="noopener noreferrer"
-              sx={{ marginRight: 1 }}
+              sx={{ marginRight: 1, cursor: 'pointer' }}
             >
               Vår policy
             </Link>
