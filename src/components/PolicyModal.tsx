@@ -141,10 +141,10 @@ export default function PolicyModal1({
               </Typography>
               <Typography variant="body1" gutterBottom>
                 Vi sparar personuppgifter (i de fall kund inte begärt om en
-                radering eller ändring av personuppgifter under avtalstid). Som
-                fysisk person har du alltid rätt att vända dig till oss och be
-                att dina personuppgifter raderas. Du har rätt att veta vad vi
-                gör med dina personuppgifter som till exempel när och hur dina
+                radering eller ändring av personuppgifter under avtalstid). Du
+                har alltid rätt att vända dig till oss och be att dina
+                personuppgifter raderas. Du har rätt att veta vad vi gör med
+                dina personuppgifter som till exempel när och hur dina
                 personuppgifter behandlas och varför. Du har dessutom rätt att i
                 vissa fall få ut dina personuppgifter eller få de flyttade,
                 rättade, raderade eller blockade.
