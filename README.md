@@ -1,3 +1,3 @@
 <h1 align="center">
-  QAPE AB
+  QAPE DEV AB
 </h1>
