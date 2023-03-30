@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "cp ./CNAME public/ && gh-pages -d public -b main",
+    "deploy": "mv ./public/static/CNAME ./ && gh-pages -d public -b main",
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
