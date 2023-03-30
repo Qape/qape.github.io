@@ -82,5 +82,5 @@ jobs:
         env:
           PREFIX_PATHS: 'true'
           REACT_APP_SITE_KEY: ${{ secrets.REACT_APP_SITE_KEY }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ${{ steps.detect-package-manager.outputs.manager }} run deploy:ci
