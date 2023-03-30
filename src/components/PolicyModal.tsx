@@ -90,7 +90,7 @@ export default function PolicyModal1({
                 kontakt med oss.
               </Typography>
               <Typography variant="h6" component="h2" gutterBottom>
-                2. Vad används uppgifterna till
+                2. Vad används uppgifterna till?
               </Typography>
               <Typography variant="body1" gutterBottom>
                 Att fullgöra avtal med kunder. Att fullgöra lagliga
