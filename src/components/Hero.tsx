@@ -14,7 +14,7 @@ export default function ProductHero({ contactUsRef }: ProductHeroProps) {
     <HeroLayout
       sxBackground={{
         backgroundImage: `url(${BackgroundImage})`,
-        backgroundColor: '#122838', // Average color of the background image.
+        backgroundColor: '#122838',
         backgroundPosition: 'center',
       }}
     >
