@@ -10,10 +10,10 @@
   ],
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d public -b main",
+    "deploy:ci": "gatsby build --prefix-paths && && cp ./CNAME ./public/ && gh-pages -d public -b gh-pages -r https://$GH_TOKEN@github.com/Qape/qape.github.io.git",
     "develop": "gatsby develop",
     "start": "gatsby develop",
-    "build": "gatsby build && cp ./CNAME ./public/",
+    "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
