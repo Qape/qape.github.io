@@ -51,7 +51,7 @@ export default function WorkWithUs() {
         display: 'flex',
         flexDirection: 'column',
         padding: { mobile: '2rem 0', sm: '4rem 0' },
-        background: 'whitesmoke',
+        background: '#fff',
       }}
     >
       <InformationSection id="information-section">
@@ -125,7 +125,10 @@ export default function WorkWithUs() {
                 }}
               >
                 <CardMedia
-                  sx={{ height: { mobile: 250, sm: 300 } }}
+                  sx={{
+                    height: { mobile: 250, sm: 300 },
+                    pointerEvents: 'none',
+                  }}
                   component="img"
                   image={card.image}
                 />

@@ -15,12 +15,14 @@ const FooterContainer = styled(Box)<{ defaultcolor?: string | undefined }>`
 `;
 
 type AppFooterProps = {
+  aboutUsRef?: React.MutableRefObject<HTMLDivElement | null>;
   footerRef?: React.MutableRefObject<HTMLDivElement | null>;
   contactUsRef?: React.MutableRefObject<HTMLDivElement | null>;
   defaultColor?: string | undefined;
 };
 
 export default function AppFooter({
+  aboutUsRef,
   footerRef,
   contactUsRef,
   defaultColor,
@@ -75,7 +77,13 @@ export default function AppFooter({
           </Typography>
           <Typography variant="body2" display={'flex'} flexDirection="column">
             <Link
-              href="https://www.gatsbyjs.com/"
+              onClick={() =>
+                aboutUsRef?.current?.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'end',
+                  inline: 'nearest',
+                })
+              }
               title="Om oss"
               target="_blank"
               rel="noopener noreferrer"
@@ -99,7 +107,7 @@ export default function AppFooter({
               Kontakta oss
             </Link>
             <Link
-              href="https://www.gatsbyjs.com/"
+              href=""
               title="Jobba hos oss"
               target="_blank"
               rel="noopener noreferrer"

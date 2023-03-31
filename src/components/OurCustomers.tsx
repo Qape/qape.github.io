@@ -33,7 +33,7 @@ export default function OurCustomers() {
   const servicesTitle = 'Våra kunder';
 
   return (
-    <Box sx={{ padding: '0 2rem 2rem 2rem', background: 'whitesmoke' }}>
+    <Box sx={{ padding: '0 2rem 2rem 2rem', background: '#fff' }}>
       <InformationSection id="information-section">
         <Typography
           variant="h4"

@@ -182,7 +182,7 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
             fontWeight: 700,
           }}
         >
-          Är du intresserad av att veta mer om oss?
+          ÄR DU INTRESSERAD AV ATT VETA MER OM OSS?
         </Typography>
         <Typography
           variant="body1"
