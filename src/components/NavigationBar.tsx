@@ -22,17 +22,13 @@ import Logo from '../images/logo.png';
 const drawerWidth = 240;
 const navItemHome = 'HEM';
 const navItemAboutUs = 'OM OSS';
-const navItemWorkWithUs = 'JOBBA PÅ QAPE';
+// const navItemWorkWithUs = 'JOBBA PÅ QAPE';
 const navItemContactUs = 'KONTAKTA OSS';
 
-const navItems = [
-  navItemHome,
-  navItemAboutUs,
-  navItemWorkWithUs,
-  navItemContactUs,
-];
+const navItems = [navItemHome, navItemAboutUs, navItemContactUs];
 
 type NavigationBarProps = {
+  aboutUsRef?: MutableRefObject<HTMLDivElement | null>;
   contactUsRef?: MutableRefObject<HTMLDivElement | null>;
   footerRef?: MutableRefObject<HTMLDivElement | null>;
   navigationRef?: MutableRefObject<HTMLDivElement | null>;
@@ -40,8 +36,8 @@ type NavigationBarProps = {
 };
 
 export default function NavigationBar({
+  aboutUsRef,
   contactUsRef,
-  footerRef,
   navigationRef,
   id,
 }: NavigationBarProps) {
@@ -54,7 +50,7 @@ export default function NavigationBar({
 
   useEffect(() => {
     if (selectedNavItem === navItemAboutUs) {
-      footerRef?.current?.scrollIntoView({
+      aboutUsRef?.current?.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
         inline: 'nearest',
