@@ -64,9 +64,9 @@ export default function PolicyModal1({
                 Integritetspolicy
               </Typography>
               <IconButton
-                id="close-button"
+                id="close-policymodal-button"
                 onClick={handleCloseModal}
-                aria-label="stänga meny"
+                aria-label="stäng policy modal"
                 sx={{
                   borderRadius: 0,
                   justifyContent: 'flex-end',

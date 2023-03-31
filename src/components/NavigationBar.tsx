@@ -1,6 +1,5 @@
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -22,7 +21,6 @@ import Logo from '../images/logo.png';
 const drawerWidth = 240;
 const navItemHome = 'HEM';
 const navItemAboutUs = 'OM OSS';
-// const navItemWorkWithUs = 'JOBBA PÅ QAPE';
 const navItemContactUs = 'KONTAKTA OSS';
 
 const navItems = [navItemHome, navItemAboutUs, navItemContactUs];
@@ -74,7 +72,7 @@ export default function NavigationBar({
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-end',
   }));
 
   const drawer = (
@@ -90,13 +88,9 @@ export default function NavigationBar({
             },
           }}
         >
-          <Typography color="white" variant="body2">
-            STÄNG
-          </Typography>
-          <ChevronRightIcon sx={{ color: 'white' }} />
+          <CloseIcon sx={{ color: 'white' }} />
         </IconButton>
       </DrawerHeader>
-      <Divider sx={{ borderColor: 'white' }} />
       <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
         <List>
           {navItems.map((item, index) => (
