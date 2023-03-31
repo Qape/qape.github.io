@@ -1,10 +1,10 @@
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
@@ -91,16 +91,26 @@ export default function NavigationBar({
           <CloseIcon sx={{ color: 'white' }} />
         </IconButton>
       </DrawerHeader>
-      <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+      <Box
+        onClick={handleDrawerToggle}
+        sx={{ display: 'flex', justifyContent: 'center' }}
+      >
         <List>
           {navItems.map((item, index) => (
             <ListItem key={item} disablePadding>
               <ListItemButton
                 onClick={() => setSelectedNavItem(item)}
                 id={`menu-item-button-${index}`}
-                sx={{ textAlign: 'center' }}
               >
-                <ListItemText primary={item.toUpperCase()} />
+                <Typography
+                  variant="h6"
+                  component="h6"
+                  sx={{
+                    fontWeight: 500,
+                  }}
+                >
+                  {item.toUpperCase()}
+                </Typography>
               </ListItemButton>
             </ListItem>
           ))}

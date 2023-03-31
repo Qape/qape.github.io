@@ -37,6 +37,12 @@ const ScrollToTop = ({ navigationRef }: ScrollToTopProps) => {
             })
           }
           color="primary"
+          sx={{
+            background: '#1c374b',
+            ':hover': {
+              background: '#1c374b',
+            },
+          }}
           size="small"
           aria-label="scroll back to top"
         >
