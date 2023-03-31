@@ -51,6 +51,7 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-plugin-manifest',
       options: {
         icon: './favicon.png',
+        cache_busting_mode: `none`,
       },
     },
     'gatsby-plugin-mdx',

@@ -5,6 +5,7 @@ import type { HeadFC } from 'gatsby';
 import * as React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
+import AboutUs from '../components/AboutUs';
 import AppFooter from '../components/AppFooter';
 import ContactUs from '../components/ContactUs';
 import Hero from '../components/Hero';
@@ -12,7 +13,6 @@ import NavigationBar from '../components/NavigationBar';
 import OurCustomers from '../components/OurCustomers';
 import ScrollToTop from '../components/ScrollToTop';
 import WorkWithUs from '../components/WorkWithUs';
-import AboutUs from '../components/AboutUs';
 
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {
