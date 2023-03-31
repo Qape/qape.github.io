@@ -51,7 +51,10 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-plugin-manifest',
       options: {
         icon: './favicon.png',
-        cache_busting_mode: `none`,
+        display: `standalone`,
+        start_url: `/`,
+        name: `Qape`,
+        short_name: `Qape`,
       },
     },
     'gatsby-plugin-mdx',
