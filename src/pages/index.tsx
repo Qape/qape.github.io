@@ -12,6 +12,7 @@ import NavigationBar from '../components/NavigationBar';
 import OurCustomers from '../components/OurCustomers';
 import ScrollToTop from '../components/ScrollToTop';
 import WorkWithUs from '../components/WorkWithUs';
+import AboutUs from '../components/AboutUs';
 
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {
@@ -74,14 +75,16 @@ export const theme = createTheme({
 const queryClient = new QueryClient();
 
 const IndexPage = () => {
-  const footerRef = React.useRef<null | HTMLDivElement>(null);
-  const contactUsRef = React.useRef<null | HTMLDivElement>(null);
   const navigationRef = React.useRef<null | HTMLDivElement>(null);
+  const aboutUsRef = React.useRef<null | HTMLDivElement>(null);
+  const contactUsRef = React.useRef<null | HTMLDivElement>(null);
+  const footerRef = React.useRef<null | HTMLDivElement>(null);
 
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <NavigationBar
+          aboutUsRef={aboutUsRef}
           contactUsRef={contactUsRef}
           footerRef={footerRef}
           navigationRef={navigationRef}
@@ -89,9 +92,11 @@ const IndexPage = () => {
         <Hero contactUsRef={contactUsRef} />
         <WorkWithUs />
         <OurCustomers />
+        <AboutUs aboutUsRef={aboutUsRef} />
         <ContactUs contactUsRef={contactUsRef} />
         <ScrollToTop navigationRef={navigationRef} />
         <AppFooter
+          aboutUsRef={aboutUsRef}
           footerRef={footerRef}
           contactUsRef={contactUsRef}
           defaultColor={DEFAULT_PAGE_COLOR}
