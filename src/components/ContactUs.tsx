@@ -138,6 +138,7 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
       category: 'Send Email',
       action: 'click',
       label: 'Skicka',
+      value: 0,
     });
 
     refetch();
