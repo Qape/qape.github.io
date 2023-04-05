@@ -14,8 +14,8 @@ import {
   Typography,
 } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 import { ChangeEvent, MutableRefObject, useEffect, useState } from 'react';
-import ReactGA from 'react-ga';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useQuery } from 'react-query';
 import styled from 'styled-components';
@@ -134,10 +134,14 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
-    ReactGA.event({
+    trackCustomEvent({
+      // string - required - The object that was interacted with (e.g.video)
       category: 'Send Email',
-      action: 'click',
+      // string - required - Type of interaction (e.g. 'play')
+      action: 'Click',
+      // string - optional - Useful for categorizing events (e.g. 'Spring Campaign')
       label: 'Skicka',
+      // number - optional - Numeric value associated with the event. (e.g. A product ID)
       value: 0,
     });
 
