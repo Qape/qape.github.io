@@ -134,9 +134,8 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
   ) => {
     e.preventDefault();
     const analyticsData = {
-      category: 'Send Email',
-      action: 'Click',
-      label: 'Skicka',
+      event_category: 'Send Email',
+      event_label: 'Skicka',
       value: 0,
     };
 
