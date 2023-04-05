@@ -33,7 +33,7 @@ declare module '@mui/material/styles' {
   }
 }
 
-const TRACKING_ID = 'G-FDZMYVLF26';
+const TRACKING_ID = 'G-RSJG795GLG';
 ReactGA.initialize(TRACKING_ID);
 
 const DEFAULT_PAGE_COLOR = '#122838';
