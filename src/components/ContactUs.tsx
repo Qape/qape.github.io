@@ -15,6 +15,7 @@ import {
 } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import { ChangeEvent, MutableRefObject, useEffect, useState } from 'react';
+import ReactGA from 'react-ga';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useQuery } from 'react-query';
 import styled from 'styled-components';
@@ -133,6 +134,12 @@ const ContactUs = ({ contactUsRef }: ContactUsProps) => {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
+    ReactGA.event({
+      category: 'Send Email',
+      action: 'click',
+      label: 'Skicka',
+    });
+
     refetch();
   };
 

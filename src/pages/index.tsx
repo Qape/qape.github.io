@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import type { HeadFC } from 'gatsby';
 import * as React from 'react';
+import ReactGA from 'react-ga';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import AboutUs from '../components/AboutUs';
@@ -31,6 +32,9 @@ declare module '@mui/material/styles' {
     desktopL: true;
   }
 }
+
+const TRACKING_ID = 'G-FDZMYVLF26';
+ReactGA.initialize(TRACKING_ID);
 
 const DEFAULT_PAGE_COLOR = '#122838';
 
@@ -79,6 +83,12 @@ const IndexPage = () => {
   const aboutUsRef = React.useRef<null | HTMLDivElement>(null);
   const contactUsRef = React.useRef<null | HTMLDivElement>(null);
   const footerRef = React.useRef<null | HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    typeof window !== 'undefined' && window !== undefined
+      ? ReactGA.pageview(window.location.pathname)
+      : undefined;
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
